@@ -28,8 +28,8 @@ public class EnemyControl : MonoBehaviour
     {
         playerInSightRange=Physics.CheckSphere(transform.position,sightRange,whatIsPlayer);
 
-        if(!playerInSightRange) Patroling();
-        if(playerInSightRange) ChasePlayer();
+        if(!playerInSightRange && GameManager.Instance.isPlayerHide) Patroling();
+        if(playerInSightRange && !GameManager.Instance.isPlayerHide) ChasePlayer();
     }
 
     private void Patroling()
@@ -67,8 +67,9 @@ public class EnemyControl : MonoBehaviour
 
     private void LookingAt()
     {
+        //0.001 because of Look Rotation Viewing Vector Is Zero error.
         var lookPos = GameManager.Instance.Player.transform.position - transform.position;
-        lookPos.y = 0;
+        lookPos.y = 0+0.001f;
         var rotation = Quaternion.LookRotation(lookPos);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 5);
     }

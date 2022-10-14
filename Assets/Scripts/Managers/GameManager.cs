@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject Player;
 
+    public bool isPlayerHide=false;
+    public bool canSwing=false;
+
     public int EnemyCounter;
     public float increaseValue;
     public float ProgressValue;

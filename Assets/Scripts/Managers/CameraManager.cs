@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Cinemachine;
+
 public class CameraManager : MonoBehaviour
 {
     public static CameraManager Instance;
 
-    /*[SerializeField] CinemachineVirtualCamera cm;
-    [SerializeField] CinemachineVirtualCamera cm2;*/
+    [SerializeField] CinemachineVirtualCamera cm;
+    [SerializeField] CinemachineVirtualCamera cm2;
 
 
     public Transform cmCamera;
@@ -23,6 +25,7 @@ public class CameraManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
     

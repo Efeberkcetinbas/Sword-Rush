@@ -11,9 +11,12 @@ public class SwordController : Obstacable
     internal override void DoAction(EnemyTrigger enemy)
     {
         //GameManager.Instance.EnemyCounter--;
-        UpdateManagers();
-        enemy.gameObject.SetActive(false);
-        Debug.Log("sdasdsadsad");
+        if(GameManager.Instance.canSwing)
+        {
+            UpdateManagers();
+            enemy.gameObject.SetActive(false);
+        }
+        
         //Sword enemy'i kesiyor.
         //Score Update Ediyor.
         //Progress arttiriyor.
