@@ -7,11 +7,16 @@ public class EnemyTrigger : MonoBehaviour
    public bool hit=false;
    public bool canMove=true;
 
-   private MeshRenderer mr;
+   //private MeshRenderer mr;
 
+   public int randomNumber;
+
+    [SerializeField] private EnemyRagdoll enemyRagdoll;
+    [SerializeField] private List<LimbControl> limbs=new List<LimbControl>();
    void Start()
    {
-    mr=GetComponent<MeshRenderer>();
+        //mr=GetComponent<MeshRenderer>();
+        randomNumber=Random.Range(0,9);
    }
 
    public void Dead()
@@ -24,11 +29,18 @@ public class EnemyTrigger : MonoBehaviour
         if(other.CompareTag("Sword"))
         {
             if(!hit && GameManager.Instance.swinging)
+            {
                 Dead();
                 UpdateManagers();
-                mr.material.color=Color.grey;
+                //mr.material.color=Color.grey;
                 hit=true;
                 canMove=false;
+                enemyRagdoll.ActiveRagdoll();
+
+                limbs[randomNumber].GetHit();
+
+            }
+                
         }
     }
 
