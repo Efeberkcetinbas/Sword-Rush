@@ -11,7 +11,7 @@ public class Lighsaber : MonoBehaviour
     [SerializeField]
     [Tooltip("The blade object")]
     private GameObject _blade = null;
-
+     
     [SerializeField]
     [Tooltip("The empty game object located at the tip of the blade")]
     private GameObject _tip = null;
@@ -54,13 +54,13 @@ public class Lighsaber : MonoBehaviour
         _mesh = new Mesh();
         _meshParent.GetComponent<MeshFilter>().mesh = _mesh;
 
-        Material trailMaterial = Instantiate(_meshParent.GetComponent<MeshRenderer>().sharedMaterial);
+        /*Material trailMaterial = Instantiate(_meshParent.GetComponent<MeshRenderer>().sharedMaterial);
         trailMaterial.SetColor("Color_8F0C0815", _colour);
         _meshParent.GetComponent<MeshRenderer>().sharedMaterial = trailMaterial;
 
         Material bladeMaterial = Instantiate(_blade.GetComponent<MeshRenderer>().sharedMaterial);
         bladeMaterial.SetColor("Color_AF2E1BB", _colour);
-        _blade.GetComponent<MeshRenderer>().sharedMaterial = bladeMaterial;
+        _blade.GetComponent<MeshRenderer>().sharedMaterial = bladeMaterial;*/
 
         _vertices = new Vector3[_trailFrameLength * NUM_VERTICES];
         _triangles = new int[_vertices.Length];
@@ -69,11 +69,11 @@ public class Lighsaber : MonoBehaviour
         _previousTipPosition = _tip.transform.position;
         _previousBasePosition = _base.transform.position;
     }
-
+    
     void LateUpdate()
     {
         //Reset the frame count one we reach the frame length
-        if (_frameCount == (_trailFrameLength * NUM_VERTICES))
+        if(_frameCount == (_trailFrameLength * NUM_VERTICES))
         {
             _frameCount = 0;
         }
@@ -119,19 +119,32 @@ public class Lighsaber : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _triggerEnterTipPosition = _tip.transform.position;
-        _triggerEnterBasePosition = _base.transform.position;
+        if(other.CompareTag("Enemy"))
+        {
+            _triggerEnterTipPosition = _tip.transform.position;
+            _triggerEnterBasePosition = _base.transform.position;
+        }
+        
+    }
 
-        if (other.GetComponent<Sliceable>() == null) return;
-        var nextPos = transform.forward * 2;
-        _triggerExitTipPosition = other.ClosestPoint(nextPos);
-        transform.GetComponent<Rigidbody>().detectCollisions = false;
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Enemy") && GameManager.Instance.canSwing)
+        {
+        _triggerExitTipPosition = _tip.transform.position;
 
+        //Create a triangle between the tip and base so that we can get the normal
         Vector3 side1 = _triggerExitTipPosition - _triggerEnterTipPosition;
         Vector3 side2 = _triggerExitTipPosition - _triggerEnterBasePosition;
+
+        //Get the point perpendicular to the triangle above which is the normal
+        //https://docs.unity3d.com/Manual/ComputingNormalPerpendicularVector.html
         Vector3 normal = Vector3.Cross(side1, side2).normalized;
 
+        //Transform the normal so that it is aligned with the object we are slicing's transform.
         Vector3 transformedNormal = ((Vector3)(other.gameObject.transform.localToWorldMatrix.transpose * normal)).normalized;
+
+        //Get the enter position relative to the object we're cutting's local transform
         Vector3 transformedStartingPoint = other.gameObject.transform.InverseTransformPoint(_triggerEnterTipPosition);
 
         Plane plane = new Plane();
@@ -142,6 +155,7 @@ public class Lighsaber : MonoBehaviour
 
         var direction = Vector3.Dot(Vector3.up, transformedNormal);
 
+        //Flip the plane so that we always know which side the positive mesh is on
         if (direction < 0)
         {
             plane = plane.flipped;
@@ -149,8 +163,10 @@ public class Lighsaber : MonoBehaviour
 
         GameObject[] slices = Slicer.Slice(plane, other.gameObject);
         Destroy(other.gameObject);
+
         Rigidbody rigidbody = slices[1].GetComponent<Rigidbody>();
         Vector3 newNormal = transformedNormal + Vector3.up * _forceAppliedToCut;
         rigidbody.AddForce(newNormal, ForceMode.Impulse);
+        }
     }
 }

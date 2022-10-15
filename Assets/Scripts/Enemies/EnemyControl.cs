@@ -26,10 +26,13 @@ public class EnemyControl : MonoBehaviour
 
     void Update()
     {
-        playerInSightRange=Physics.CheckSphere(transform.position,sightRange,whatIsPlayer);
-
-        if(!playerInSightRange && GameManager.Instance.isPlayerHide) Patroling();
-        if(playerInSightRange && !GameManager.Instance.isPlayerHide) ChasePlayer();
+        if(transform.GetComponent<EnemyTrigger>().canMove)
+        {
+            playerInSightRange=Physics.CheckSphere(transform.position,sightRange,whatIsPlayer);
+            if(!playerInSightRange && GameManager.Instance.isPlayerHide) Patroling();
+            if(playerInSightRange && !GameManager.Instance.isPlayerHide) ChasePlayer();
+        }
+        
     }
 
     private void Patroling()
