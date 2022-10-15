@@ -10,7 +10,10 @@ public class GameManager : MonoBehaviour
     public GameObject Player;
 
     public bool isPlayerHide=false;
-    public bool canSwing=false;
+    public bool swinging=false;
+    public bool canSwing=true;
+    public float swingTime;
+    public float incrementalSwingTime;
 
     public int EnemyCounter;
     public float increaseValue;
@@ -32,6 +35,22 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
 
+    }
+
+    private void Update()
+    {
+        //swinging=False
+        if(canSwing)
+        {
+            swinging=false;
+            swingTime+=Time.deltaTime;
+            if(swingTime>incrementalSwingTime)
+            {
+                swinging=true;
+                swingTime=0;
+                canSwing=false;
+            }
+        }
     }
    
     public void UpdateEnemyCounter()

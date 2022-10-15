@@ -23,7 +23,7 @@ public class EnemyTrigger : MonoBehaviour
     {
         if(other.CompareTag("Sword"))
         {
-            if(!hit && GameManager.Instance.canSwing)
+            if(!hit && GameManager.Instance.swinging)
                 Dead();
                 UpdateManagers();
                 mr.material.color=Color.grey;

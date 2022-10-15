@@ -129,7 +129,7 @@ public class Lighsaber : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.CompareTag("Enemy") && GameManager.Instance.canSwing)
+        if(other.CompareTag("Enemy") && GameManager.Instance.swinging)
         {
         _triggerExitTipPosition = _tip.transform.position;
 

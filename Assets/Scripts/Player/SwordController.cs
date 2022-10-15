@@ -11,7 +11,7 @@ public class SwordController : Obstacable
     internal override void DoAction(EnemyTrigger enemy)
     {
         //GameManager.Instance.EnemyCounter--;
-        if(GameManager.Instance.canSwing)
+        if(GameManager.Instance.swinging)
         {
             //UpdateManagers();
             //

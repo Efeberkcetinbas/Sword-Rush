@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody playerRigidBody;
     internal Animator playerAnimator;
 
+    [SerializeField] private TouchController _touchController;
     internal bool canAttack=false;
 
 
@@ -22,8 +23,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        DoSwordSwing();
+        //DoSwordSwing();
     }
+
+    
 
     public void FixedUpdate()
     {
@@ -37,12 +40,16 @@ public class PlayerMovement : MonoBehaviour
             if (speed != 0)
             {
                 if(playerRigidBody.velocity != Vector3.zero)
+                {
+                    playerAnimator.SetBool("attack",false);
                     transform.rotation = Quaternion.LookRotation(playerRigidBody.velocity);
+                }
             }
             canAttack=false;
         }
         else if (floatingJoystick.Vertical == 0 && floatingJoystick.Horizontal == 0)
         {
+            playerAnimator.SetBool("attack",false);
             playerRigidBody.velocity = new Vector3(0, 0, 0);
             canAttack=true;
         }
@@ -51,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    public void DoSwordSwing()
+    /*public void DoSwordSwing()
     {
         if(Input.touchCount>0)
         {
@@ -69,6 +76,6 @@ public class PlayerMovement : MonoBehaviour
                 GameManager.Instance.canSwing=false;
             }
         }
-    }
+    }*/
 
 }
