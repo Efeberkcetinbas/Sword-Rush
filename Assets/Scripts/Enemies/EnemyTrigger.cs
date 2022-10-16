@@ -16,9 +16,14 @@ public class EnemyTrigger : MonoBehaviour
 
     [SerializeField] private EnemyRagdoll enemyRagdoll;
     [SerializeField] private List<LimbControl> limbs=new List<LimbControl>();
+
+    private GameManager gameManager;
+    private UIManager uiManager;
    void Start()
    {
         //mr=GetComponent<MeshRenderer>();
+        gameManager=GameManager.Instance;
+        uiManager=UIManager.Instance;
         randomNumber=Random.Range(0,9);
    }
 
@@ -32,8 +37,9 @@ public class EnemyTrigger : MonoBehaviour
         if(other.CompareTag("Sword"))
         {
             //&& GameManager.Instance.swinging
-            if(!hit)
+            if(!hit && GameManager.Instance.canSwing)
             {
+                Debug.Log("BURAYA" + "kez");
                 Dead();
                 UpdateManagers();
                 GetComponent<Animator>().enabled=false;
@@ -46,6 +52,12 @@ public class EnemyTrigger : MonoBehaviour
 
                 StartCoroutine(DeactiveRagdoll());
 
+                if(gameManager.ProgressValue==0.5f)
+                {
+                    gameManager.BarFullPlayParticle();
+                    gameManager.IncreaseSwordAreaCollider();
+                }
+
             }
                 
         }
@@ -53,9 +65,12 @@ public class EnemyTrigger : MonoBehaviour
 
     private void UpdateManagers()
     {
-        GameManager.Instance.ProgressValue+=1/(float)GameManager.Instance.EnemyCounter;
-        UIManager.Instance.SetProgressbar(GameManager.Instance.ProgressValue);
+        gameManager.ProgressValue+=1/(float)gameManager.EnemyCounter;
+        uiManager.SetProgressbar(gameManager.ProgressValue);
+        uiManager.ColorChanger();
     }
+
+    
 
     IEnumerator DeactiveRagdoll()
     {

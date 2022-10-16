@@ -9,8 +9,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody playerRigidBody;
     internal Animator playerAnimator;
 
-    [SerializeField] private TouchController _touchController;
-    internal bool canAttack=false;
+    //[SerializeField] private TouchController _touchController;
 
 
     private float newSpeed;
@@ -46,13 +45,11 @@ public class PlayerMovement : MonoBehaviour
                     transform.rotation = Quaternion.LookRotation(playerRigidBody.velocity);
                 }
             }
-            canAttack=false;
         }
         else if (floatingJoystick.Vertical == 0 && floatingJoystick.Horizontal == 0)
         {
             playerAnimator.SetBool("attack",false);
             playerRigidBody.velocity = new Vector3(0, 0, 0);
-            canAttack=true;
         }
         newSpeed = playerRigidBody.velocity.sqrMagnitude;
         playerAnimator.SetFloat("speed", Mathf.Abs(newSpeed));

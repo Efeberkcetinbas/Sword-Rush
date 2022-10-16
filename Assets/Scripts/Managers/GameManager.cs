@@ -9,9 +9,13 @@ public class GameManager : MonoBehaviour
 
     public GameObject Player;
 
+    [Header("Bools")]
     public bool isPlayerHide=false;
     public bool swinging=false;
     public bool canSwing=true;
+    public bool stopTime=false;
+
+    [Header("Times and Values")]
     public float swingTime;
     public float incrementalSwingTime;
 
@@ -19,7 +23,14 @@ public class GameManager : MonoBehaviour
     public float increaseValue;
     public float ProgressValue;
 
+    [Header("Particles")]
     public ParticleSystem splashParticle;
+    public ParticleSystem barfullParticle;
+
+
+    public Vector3 PlayerInitPos;
+
+    public Transform sword;
 
     private void Awake()
     {
@@ -66,10 +77,29 @@ public class GameManager : MonoBehaviour
     {
         ProgressValue=0;
         UIManager.Instance.ProgressBar.DOFillAmount(0, .1f);
+        Player.transform.position=PlayerInitPos;
     }
 
-    public void PlayParticle()
+    public void SwordPlayParticle()
     {
         splashParticle.Play();
     }
+
+    public void BarFullPlayParticle()
+    {
+        barfullParticle.Play();
+    }
+
+    public void IncreaseSwordAreaCollider()
+    {
+        //Incrementaller scripti eklendiginde matematiksel ifadeyle yaz.
+        //Yani incrementaldeki degeri al carpimi seklinde yaz.
+        //PlayerPref ile tutarsin
+        var val=sword.transform.localScale.x;
+        Debug.Log("VAL : " + val);
+        stopTime=true;
+        sword.transform.DOScale(new Vector3(val*10,val*10,val*10),1f).OnComplete(()=>sword.transform.DOScale(new Vector3(val,val,val),1f));
+    }
+
+    
 }

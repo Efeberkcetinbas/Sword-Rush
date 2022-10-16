@@ -8,7 +8,7 @@ public abstract class Obstacable : MonoBehaviour
     float st = 0;
     internal float interval = 3;
     internal bool canInteract = true;
-    internal string interactionTag = "Enemy";
+    internal string interactionTag = "Player";
 
 
     void OnTriggerEnter(Collider other)
@@ -16,7 +16,7 @@ public abstract class Obstacable : MonoBehaviour
         if (!canInteract) return;
         if (other.tag == interactionTag)
         {
-            StartInteractWithEnemy(other.GetComponent<EnemyTrigger>());
+            StartInteractWithEnemy(other.GetComponent<PlayerTrigger>());
         }
     }
     void OnTriggerStay(Collider other)
@@ -24,40 +24,40 @@ public abstract class Obstacable : MonoBehaviour
         if (!canInteract) return;
         if (other.tag == interactionTag)
         {
-            InteractWithEnemy(other.GetComponent<EnemyTrigger>());
+            InteractWithEnemy(other.GetComponent<PlayerTrigger>());
         }
     }
     void OnTriggerExit(Collider other)
     {
         if (other.tag == interactionTag)
         {
-            InteractionExit(other.GetComponent<EnemyTrigger>());
+            InteractionExit(other.GetComponent<PlayerTrigger>());
         }
     }
 
-    void StartInteractWithEnemy(EnemyTrigger enemy)
+    void StartInteractWithEnemy(PlayerTrigger player)
     {
-        DoAction(enemy);
+        DoAction(player);
     }
 
-    void InteractWithEnemy(EnemyTrigger enemy)
+    void InteractWithEnemy(PlayerTrigger player)
     {
         st += Time.deltaTime;
         if (st > interval)
         {
             ResetProgress();
-            DoAction(enemy);
+            DoAction(player);
         }
     }
     internal virtual void ResetProgress()
     {
         st = 0;
     }
-    internal virtual void InteractionExit(EnemyTrigger enemy)
+    internal virtual void InteractionExit(PlayerTrigger player)
     {
         st = 0;
     }
-    internal virtual void DoAction(EnemyTrigger enemy)
+    internal virtual void DoAction(PlayerTrigger player)
     {
         throw new System.NotImplementedException();
     }

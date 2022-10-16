@@ -11,8 +11,11 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     public TextMeshProUGUI LevelText;
+    public TextMeshProUGUI moneyText;
 
     public Image ProgressBar;
+
+    public float lerpTime;
 
     void Awake()
     {
@@ -29,6 +32,19 @@ public class UIManager : MonoBehaviour
     public void UpgradeLevelText()
     {
         LevelText.text = "Level " + (PlayerPrefs.GetInt("RealLevel") + 1).ToString();
+    }
+
+    public void UpgradeMoneyText()
+    {
+        moneyText.text = PlayerPrefs.GetInt("money").ToString();
+    }
+
+    public void ColorChanger()
+    {
+        //Matematiksel bir formul ile yaklas buraya.
+        lerpTime+=0.1f;
+        Color healthColor=Color.Lerp(Color.yellow,Color.red,(lerpTime));
+        ProgressBar.color=healthColor;
     }
 
     /*public void UpgradeFromToLevelText()
