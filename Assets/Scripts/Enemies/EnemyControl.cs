@@ -19,9 +19,20 @@ public class EnemyControl : MonoBehaviour
     public float sightRange;
     public bool playerInSightRange;
 
+    private Animator animator;
+
+    private float randomSpeed;
+
     void Awake()
     {
         agent=GetComponent<NavMeshAgent>();
+        randomSpeed=Random.Range(0.5f,2);
+    }
+
+    void Start()
+    {
+        animator=GetComponent<Animator>();
+        agent.speed=randomSpeed;
     }
 
     void Update()
@@ -46,6 +57,8 @@ public class EnemyControl : MonoBehaviour
         //Walkpoint reached
         if(distanceToWalkPoint.magnitude<1f)
             walkPointSet=false;
+
+        animator.SetBool("move",false);
         
 
     }
@@ -66,6 +79,7 @@ public class EnemyControl : MonoBehaviour
     {
         agent.SetDestination(GameManager.Instance.Player.transform.position);
         LookingAt();
+        animator.SetBool("move", true);
     }
 
     private void LookingAt()

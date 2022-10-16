@@ -33,6 +33,7 @@ public class TouchController : MonoBehaviour,IDragHandler,IPointerDownHandler,IP
         {
             GameManager.Instance.canSwing=true;
             GameManager.Instance.Player.GetComponent<PlayerMovement>().playerAnimator.SetBool("attack",true);
+            GameManager.Instance.PlayParticle();
         }
 
     }

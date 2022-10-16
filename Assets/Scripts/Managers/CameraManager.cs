@@ -15,6 +15,7 @@ public class CameraManager : MonoBehaviour
     public Transform cmCamera;
     public Transform cm2Camera;
 
+
     private void Awake()
     {
         if (Instance == null)

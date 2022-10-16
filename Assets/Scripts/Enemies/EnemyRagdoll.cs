@@ -11,6 +11,7 @@ public class EnemyRagdoll : MonoBehaviour
         ragdollRigidbody=new List<Rigidbody>(transform.GetComponentsInChildren<Rigidbody>());
         ragdollRigidbody.Remove(GetComponent<Rigidbody>());
 
+
         DeactiveRagdoll();
     }
 
@@ -34,4 +35,6 @@ public class EnemyRagdoll : MonoBehaviour
             ragdollRigidbody[i].isKinematic=true;
         }
     }
+
+    
 }

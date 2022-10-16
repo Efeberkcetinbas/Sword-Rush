@@ -7,15 +7,8 @@ public class LimbControl : MonoBehaviour
     [SerializeField] LimbControl[] childLimbs;
 
     [SerializeField] private GameObject limbPrefab;
-    [SerializeField] private GameObject woundHole;
 
-    void Start()
-    {
-        if(woundHole !=null)
-        {
-            woundHole.SetActive(false);
-        }
-    }
+   
 
     public void GetHit()
     {
@@ -31,10 +24,6 @@ public class LimbControl : MonoBehaviour
             }
         }
 
-        if(woundHole!=null)
-        {
-            woundHole.SetActive(true);
-        }
 
         if(limbPrefab!=null)
         {

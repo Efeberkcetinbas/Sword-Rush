@@ -8,7 +8,7 @@ public class BehaviorControl : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
-        //farklı cesitlerde animasyonlarimiz Random sekilde geliyor.
+        //farklı cesitlerde animasyonlarimiz Random sekilde geliyor. Istersek sirasiyla da yapabiliriz.
         int randomNumber=Random.Range(0,2);
         Debug.Log(randomNumber);
         animator.SetFloat("sword",randomNumber);

@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     public int EnemyCounter;
     public float increaseValue;
     public float ProgressValue;
+
+    public ParticleSystem splashParticle;
+
     private void Awake()
     {
         if (Instance == null)
@@ -63,5 +66,10 @@ public class GameManager : MonoBehaviour
     {
         ProgressValue=0;
         UIManager.Instance.ProgressBar.DOFillAmount(0, .1f);
+    }
+
+    public void PlayParticle()
+    {
+        splashParticle.Play();
     }
 }
