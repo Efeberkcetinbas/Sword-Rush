@@ -9,14 +9,15 @@ public class LevelGenerator : MonoBehaviour
     GameObject gameEndPrefab;
 
     [SerializeField] private GameObject enemyPrefab;
+        [SerializeField] private GameObject propPrefab;
 
     [Header("Controllers")]
-    /*[SerializeField] PropGenerator propGenerator;
-    [SerializeField] WallGenerator wallGenerator;*/
+    [SerializeField] PropGenerator propGenerator;
+    //[SerializeField] WallGenerator wallGenerator;
     [SerializeField] EnemyGenerator enemyGenerator;
 
     [Header("Generation Strings")]
-    //[SerializeField] string propGenerateString;
+    [SerializeField] string propGenerateString;
 
 
     //Konumlari buraya yazalim.
@@ -28,10 +29,10 @@ public class LevelGenerator : MonoBehaviour
     void Start()
     {
 
-        /*if(!string.IsNullOrEmpty(propGenerateString)){
-            propGenerator.Init(propGenerateString);
+        if(!string.IsNullOrEmpty(propGenerateString)){
+            propGenerator.Init(propGenerateString,propPrefab);
         }
-        if(!string.IsNullOrEmpty(wallGenerateString)){
+        /*if(!string.IsNullOrEmpty(wallGenerateString)){
             wallGenerator.Init(wallGenerateString,inGameWallPrefab);
         }*/
         if(!string.IsNullOrEmpty(enemyGenerateString)){

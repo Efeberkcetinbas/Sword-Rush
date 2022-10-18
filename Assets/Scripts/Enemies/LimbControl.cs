@@ -27,7 +27,9 @@ public class LimbControl : MonoBehaviour
 
         if(limbPrefab!=null)
         {
-            Instantiate(limbPrefab, transform.position,transform.rotation);
+            GameObject limbClone=(GameObject)Instantiate(limbPrefab, transform.position,transform.rotation);
+            Destroy(limbClone,3);
+            //Instantiate(limbPrefab, transform.position,transform.rotation);
         }
 
         transform.localScale=Vector3.zero;

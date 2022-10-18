@@ -19,11 +19,13 @@ public class EnemyTrigger : MonoBehaviour
 
     private GameManager gameManager;
     private UIManager uiManager;
+    private CameraManager cameraManager;
    void Start()
    {
         //mr=GetComponent<MeshRenderer>();
         gameManager=GameManager.Instance;
         uiManager=UIManager.Instance;
+        cameraManager=CameraManager.Instance;
         randomNumber=Random.Range(0,9);
    }
 
@@ -61,6 +63,10 @@ public class EnemyTrigger : MonoBehaviour
             }
                 
         }
+        if(other.CompareTag("Player") && !GameManager.Instance.canSwing)
+        {
+            Debug.Log("PLAYER HIT ");
+        }
     }
 
     private void UpdateManagers()
@@ -68,6 +74,8 @@ public class EnemyTrigger : MonoBehaviour
         gameManager.ProgressValue+=1/(float)gameManager.EnemyCounter;
         uiManager.SetProgressbar(gameManager.ProgressValue);
         uiManager.ColorChanger();
+        cameraManager.ShakeIt();
+
     }
 
     

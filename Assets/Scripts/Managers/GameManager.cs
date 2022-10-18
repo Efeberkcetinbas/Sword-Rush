@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-
+        GetAllPlayerPrefs();
     }
 
     private void Update()
@@ -101,5 +101,28 @@ public class GameManager : MonoBehaviour
         sword.transform.DOScale(new Vector3(val*10,val*10,val*10),1f).OnComplete(()=>sword.transform.DOScale(new Vector3(val,val,val),1f));
     }
 
+    public void GetAllPlayerPrefs()
+    {
+
+    }
+
+    #region Incremental
+
+    public void UpdateIncome()
+    {
+        //Burada Taco Rundaki mekanigi dene.
+    }
+
+    public void UpdateHitArea()
+    {
+
+    }
+
+    public void UpdateSlashSpeed()
+    {
+
+    }
+
+    #endregion
     
 }

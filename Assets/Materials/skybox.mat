@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Orange
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: skybox
+  m_Shader: {fileID: 4800000, guid: 85d6438075d0f2d4ab83a94cd42fe103, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -63,16 +63,29 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Metallic: 0.313
+    - _HorizonHight: 0.53
+    - _HorizonLineContribution: 0.649
+    - _HorizonLineExponent: 4
+    - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _SkyGradientExponent: 2.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _SunDiscExponent: 125000
+    - _SunDiscMultiplier: 25
+    - _SunHaloContribution: 0.708
+    - _SunHaloExponent: 125
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.40444645, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _HorizonLineColor: {r: 1, g: 0.4828682, b: 0, a: 1}
+    - _SkyGradientBottom: {r: 1, g: 0.92857933, b: 0.8160377, a: 1}
+    - _SkyGradientTop: {r: 0.24056602, g: 0.8187156, b: 1, a: 1}
+    - _SunDiscColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SunHaloColor: {r: 1, g: 0.7248961, b: 0.4764151, a: 1}
   m_BuildTextureStacks: []

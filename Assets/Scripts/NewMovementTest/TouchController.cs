@@ -12,12 +12,10 @@ public class TouchController : MonoBehaviour,IDragHandler,IPointerDownHandler,IP
     public void OnPointerDown(PointerEventData eventData)
     {
         _touchPosition = eventData.position;
-        Debug.Log("sdasdasd");
     }
     
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("DRAGGGG");
         var delta = eventData.position - _touchPosition;
         Direction = delta.normalized;
         Rotation = delta.normalized;
@@ -27,7 +25,7 @@ public class TouchController : MonoBehaviour,IDragHandler,IPointerDownHandler,IP
     public void OnPointerUp(PointerEventData eventData)
     {
         Direction = Vector2.zero;
-        Debug.Log("RELEASE");
+        //Debug.Log("RELEASE");
         //GameManager.Instance.swinging=true;
         if(GameManager.Instance.swinging)
         {
