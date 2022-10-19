@@ -8,7 +8,7 @@ public class BreakableControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if(collider.CompareTag("Sword") && GameManager.Instance.canSwing)
+        if(collider.CompareTag("Sword") && GameManager.Instance.canDoDamage)
         {
             Create(scatteredObject);
             Destroy(gameObject);

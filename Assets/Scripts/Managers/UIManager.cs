@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using DG.Tweening;
+using System;
 
 public class UIManager : MonoBehaviour
 {
@@ -13,12 +14,21 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI LevelText;
     public TextMeshProUGUI moneyText;
 
+    
+
+
+
     public Image ProgressBar;
     public Image SwordFillBar;
 
     public RectTransform fader;
 
     public float lerpTime;
+
+    [Header("Incrementals")]
+    public TextMeshProUGUI incrementalSwingTime;
+    public TextMeshProUGUI earnText;
+    public TextMeshProUGUI swordAreaText;
 
     void Awake()
     {
@@ -50,6 +60,23 @@ public class UIManager : MonoBehaviour
         ProgressBar.color=healthColor;
     }
 
+    public void UpdateSwingTime(float time)
+    {
+        time=(float)Math.Round(time,2);
+        incrementalSwingTime.text=time.ToString();
+    }
+
+    public void UpdateEarn()
+    {
+        //10 hane gozukuyor bazen onu duzelt.
+        earnText.text=GameManager.Instance.EarningMoney.ToString();
+    }
+
+    public void UpdateArea()
+    {
+        swordAreaText.text=GameManager.Instance.SwordArea.ToString();
+    }
+
 
 
     /*public void UpgradeFromToLevelText()
@@ -74,7 +101,7 @@ public class UIManager : MonoBehaviour
         fader.gameObject.SetActive(true);
 
         fader.DOScale(new Vector3(3,3,3),1).OnComplete(()=>{
-            fader.DOScale(Vector3.zero,1f).OnComplete(()=>fader.gameObject.SetActive(false));
+            fader.DOScale(Vector3.zero,1f).OnComplete(()=>fader.gameObject.SetActive(false)).OnComplete(()=>GameManager.Instance.OpenIncrementalPanel());
         });
     }
 }

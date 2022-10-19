@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class InteractUpgrade : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class InteractUpgrade : MonoBehaviour
     public TextMeshProUGUI areaText;
     public TextMeshProUGUI earnText;
 
+    private Color areaColor;
+    private Color timeColor;
+    private Color earnColor;    
 
     MoneyManager moneyManager;
     void Start()
@@ -48,6 +52,7 @@ public class InteractUpgrade : MonoBehaviour
             timeDecreasePrice=Mathf.RoundToInt(timeDecreasePrice*1.3f);
             PlayerPrefs.SetFloat("timeDecrease",timeDecreasePrice);
             UpdateText(timeText,timeDecreasePrice);
+            MakeTween(timeDecreaseButton.gameObject);
         }
 
         else
@@ -67,10 +72,9 @@ public class InteractUpgrade : MonoBehaviour
             areaPrice=Mathf.RoundToInt(areaPrice*1.5f);
             PlayerPrefs.SetFloat("area",areaPrice);
             UpdateText(areaText,areaPrice);
+            MakeTween(areaButton.gameObject);
 
             //Check methodu yaz. Her para arttiginda bunlari kontrol etsin. Check methodunu her level degistiginde cagir
-            if(moneyManager.moneyAmount<areaPrice)
-                ButtonActive(areaButton,false);
         }
 
         else
@@ -89,6 +93,7 @@ public class InteractUpgrade : MonoBehaviour
             earnPrice=Mathf.RoundToInt(earnPrice*1.2f);
             PlayerPrefs.SetFloat("earn",earnPrice);
             UpdateText(earnText,earnPrice);
+            MakeTween(earnButton.gameObject);
         }
 
         else
@@ -114,26 +119,61 @@ public class InteractUpgrade : MonoBehaviour
         TextP.text=price.ToString();
     }
 
+    private void ChangeColor(Button buttonName,Color color)
+    {
+        ColorBlock cb=buttonName.colors;
+        cb.normalColor=color;
+        buttonName.colors=cb;
+    }
+
+    private void MakeTween(GameObject gameObject)
+    {
+        gameObject.transform.DOScale(new Vector3(0.75f,0.75f,0.75f),0.25f).OnComplete(()=>gameObject.transform.DOScale(Vector3.one,0.25f));
+    }
+
     public void CheckButtonsInteraction()
     {
 
         if(moneyManager.moneyAmount>=areaPrice)
+        {
             ButtonActive(areaButton,true);
+            ChangeColor(areaButton,Color.yellow);
+        }
 
         if(moneyManager.moneyAmount<areaPrice)
+        {
             ButtonActive(areaButton,false);
+            ChangeColor(areaButton,Color.grey);
+
+        }
         
         if(moneyManager.moneyAmount>=earnPrice)
+        {
             ButtonActive(earnButton,true);
+            ChangeColor(earnButton,Color.yellow);
+
+        }
         
         if(moneyManager.moneyAmount<earnPrice)
+        {
             ButtonActive(earnButton,false);
+            ChangeColor(earnButton,Color.grey);
+
+        }
 
         if(moneyManager.moneyAmount>=timeDecreasePrice)
+        {
             ButtonActive(timeDecreaseButton,true);
+            ChangeColor(timeDecreaseButton,Color.yellow);
+
+        }
 
         if(moneyManager.moneyAmount<timeDecreasePrice)
+        {
             ButtonActive(timeDecreaseButton,false);
+            ChangeColor(timeDecreaseButton,Color.grey);
+
+        }
 
     }
 

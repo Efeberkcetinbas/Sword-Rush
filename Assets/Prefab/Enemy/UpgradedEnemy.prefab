@@ -2014,6 +2014,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hit: 0
   canMove: 1
+  isDead: 0
   deadZone: {fileID: 7518796236106049005}
   smr: {fileID: 6058807270714155871}
   randomNumber: 0
@@ -2051,6 +2052,7 @@ MonoBehaviour:
   walkPointRange: 0
   sightRange: 3
   playerInSightRange: 0
+  enemyTrigger: {fileID: 7819418315391494604}
 --- !u!195 &7819418315391494608
 NavMeshAgent:
   m_ObjectHideFlags: 0

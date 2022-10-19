@@ -23,6 +23,10 @@ public class EnemyControl : MonoBehaviour
 
     private float randomSpeed;
 
+    private bool stop=true;
+
+    [SerializeField] private EnemyTrigger enemyTrigger;
+
     void Awake()
     {
         agent=GetComponent<NavMeshAgent>();
@@ -37,33 +41,44 @@ public class EnemyControl : MonoBehaviour
 
     void Update()
     {
-        if(transform.GetComponent<EnemyTrigger>().canMove)
+        if(!enemyTrigger.isDead)
         {
             playerInSightRange=Physics.CheckSphere(transform.position,sightRange,whatIsPlayer);
-            if(!playerInSightRange && GameManager.Instance.isPlayerHide) Patroling();
+            if(!playerInSightRange || GameManager.Instance.isPlayerHide) Patroling();
             if(playerInSightRange && !GameManager.Instance.isPlayerHide) ChasePlayer();
         }
+
+        if(playerInSightRange)
+        {
+            stop=false;
+            enemyTrigger.canMove=true;
+        }
+        else
+        {
+            stop=true;
+            enemyTrigger.canMove=false;
+        }
+            
         
     }
 
     private void Patroling()
     {
-        if(!walkPointSet) SearchWalkPoint();
+        //if(!walkPointSet) SearchWalkPoint();
 
-        if(walkPointSet)
-            agent.SetDestination(walkPoint);
+        /*if(walkPointSet)
+            agent.SetDestination(walkPoint);*/
         
-        Vector3 distanceToWalkPoint=transform.position-walkPoint;
+        /*Vector3 distanceToWalkPoint=transform.position-walkPoint;
         //Walkpoint reached
         if(distanceToWalkPoint.magnitude<1f)
-            walkPointSet=false;
+            walkPointSet=false;*/
 
         animator.SetBool("move",false);
-        
 
     }
 
-    private void SearchWalkPoint()
+    /*private void SearchWalkPoint()
     {
         //Calculate random point in range
         float randomZ=Random.Range(-walkPointRange,walkPointRange);
@@ -73,13 +88,20 @@ public class EnemyControl : MonoBehaviour
 
         if(Physics.Raycast(walkPoint,-transform.up,2f,whatIsGround))
             walkPointSet=true;
-    }
+    }*/
 
     private void ChasePlayer()
     {
-        agent.SetDestination(GameManager.Instance.Player.transform.position);
-        LookingAt();
-        animator.SetBool("move", true);
+        
+        if(enemyTrigger.canMove)
+        {
+            if(!stop)
+                agent.SetDestination(GameManager.Instance.Player.transform.position);
+
+            LookingAt();
+            animator.SetBool("move", true);
+        }
+        
     }
 
     private void LookingAt()

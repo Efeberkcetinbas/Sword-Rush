@@ -7,6 +7,7 @@ public class EnemyTrigger : MonoBehaviour
 {
    public bool hit=false;
    public bool canMove=true;
+   public bool isDead=false;
 
    [SerializeField] private ParticleSystem deadZone;
 
@@ -45,7 +46,7 @@ public class EnemyTrigger : MonoBehaviour
         enemyRagdoll.ActiveRagdoll();
         PlayDeadZone();
         limbs[randomNumber].GetHit();
-
+        isDead=true;
         StartCoroutine(DeactiveRagdoll());
 
         if(gameManager.ProgressValue==1f)
@@ -61,14 +62,14 @@ public class EnemyTrigger : MonoBehaviour
         if(other.CompareTag("Sword"))
         {
             //&& GameManager.Instance.swinging
-            if(!hit && GameManager.Instance.canSwing)
+            if(!hit && GameManager.Instance.canDoDamage)
             {
                 hit=true;
                 Dead();
             }
                 
         }
-        if(other.CompareTag("Player") && !GameManager.Instance.canSwing)
+        if(other.CompareTag("Player") && !GameManager.Instance.canDoDamage)
         {
             Debug.Log("PLAYER HIT ");
         }

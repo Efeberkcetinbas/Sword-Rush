@@ -36,14 +36,20 @@ public class LevelManager : MonoBehaviour
         if (levelIndex == levels.Count) levelIndex = 0;
         PlayerPrefs.SetInt("LevelNumber", levelIndex);
         //UIManager.Instance.UpgradeLevelText();
+
+        //Daha güzel bir şekilde yaz bunları çok daginik.
         UIManager.Instance.UpgradeLevelText();
         UIManager.Instance.UpgradeMoneyText();
+        UIManager.Instance.UpdateSwingTime(GameManager.Instance.incrementalSwingTime);
+        UIManager.Instance.UpdateEarn();
+        UIManager.Instance.UpdateArea();
         for (int i = 0; i < levels.Count; i++)
         {
             levels[i].SetActive(false);
         }
         levels[levelIndex].SetActive(true);
         GameManager.Instance.UpdateEnemyCounter();
+        //GameManager.Instance.OpenIncrementalPanel();
         StartCoroutine(CallCheckButtons());
         //DotweenManager.Instance.FadeTween(fader, 0, 0, 0, .25f);
     }

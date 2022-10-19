@@ -9,11 +9,12 @@ public class ActivateBomb : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if(collider.CompareTag("Sword") && GameManager.Instance.canSwing)
+        if(collider.CompareTag("Sword") && GameManager.Instance.canDoDamage)
         {
             CameraManager.Instance.ShakeIt();
             explotion.fireEffect.Play();
-                    //Efekt olustur
+            SoundManager.Instance.Play("grenade");
+            
             for (int i = 0; i < explotion.enemies.Count; i++)
             {
                 if(explotion.enemies[i]!=null)
