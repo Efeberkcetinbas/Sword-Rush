@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [Header("Bools")]
     public bool isPlayerHide=false;
     public bool swinging=false;
+    //canSwing kesme hareketine yariyor.
     public bool canSwing=true;
     public bool stopTime=false;
 
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     public float swingTime;
     public float incrementalSwingTime;
     public float radialSwingTime;
+
 
     public int EnemyCounter;
     public int EarningMoney;

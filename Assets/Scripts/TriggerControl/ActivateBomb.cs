@@ -16,8 +16,8 @@ public class ActivateBomb : MonoBehaviour
                     //Efekt olustur
             for (int i = 0; i < explotion.enemies.Count; i++)
             {
-                explotion.enemies[i].GetComponent<EnemyTrigger>().Dead();
-                
+                if(explotion.enemies[i]!=null)
+                    explotion.enemies[i].GetComponent<EnemyTrigger>().Dead();
             }
 
             gameObject.SetActive(false);
