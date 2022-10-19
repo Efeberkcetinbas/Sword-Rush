@@ -9,7 +9,7 @@ public class CoinControl : Obstacable
     [SerializeField] private GameObject coin;
     internal override void DoAction(PlayerTrigger player)
     {
-        MoneyManager.Instance.UpdateMoney(10);
+        MoneyManager.Instance.UpdateMoney();
         Debug.Log(PlayerPrefs.GetInt("money"));
         PlayParticle();
         coin.SetActive(false);

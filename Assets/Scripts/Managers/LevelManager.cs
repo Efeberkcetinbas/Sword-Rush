@@ -10,6 +10,8 @@ public class LevelManager : MonoBehaviour
     public int levelIndex;
     public List<GameObject> levels;
 
+    public InteractUpgrade InteractUpgrade;
+
     //[SerializeField] RectTransform fader;
 
     private void Awake()
@@ -35,12 +37,14 @@ public class LevelManager : MonoBehaviour
         PlayerPrefs.SetInt("LevelNumber", levelIndex);
         //UIManager.Instance.UpgradeLevelText();
         UIManager.Instance.UpgradeLevelText();
+        UIManager.Instance.UpgradeMoneyText();
         for (int i = 0; i < levels.Count; i++)
         {
             levels[i].SetActive(false);
         }
         levels[levelIndex].SetActive(true);
         GameManager.Instance.UpdateEnemyCounter();
+        StartCoroutine(CallCheckButtons());
         //DotweenManager.Instance.FadeTween(fader, 0, 0, 0, .25f);
     }
 
@@ -50,5 +54,14 @@ public class LevelManager : MonoBehaviour
         PlayerPrefs.SetInt("RealLevel", PlayerPrefs.GetInt("RealLevel", 0) + 1);
         LoadLevel();
         GameManager.Instance.ResetTheLevel();
+        //Startda calismasini istiyorsan loadLevel methodu icine yazacaksin. Diger turlu burada duracak.
+        UIManager.Instance.StartFader();
+        //GameManager.Instance.GetAllPlayerPrefs();
+    }
+
+    IEnumerator CallCheckButtons()
+    {
+        yield return new WaitForSeconds(0.5f);
+        InteractUpgrade.CheckButtonsInteraction();
     }
 }

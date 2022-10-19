@@ -10,6 +10,10 @@ public class EnemyTrigger : MonoBehaviour
 
    [SerializeField] private ParticleSystem deadZone;
 
+   [SerializeField] private SkinnedMeshRenderer smr;
+
+   private BoxCollider boxCollider;
+
    //private MeshRenderer mr;
 
    public int randomNumber;
@@ -27,11 +31,29 @@ public class EnemyTrigger : MonoBehaviour
         uiManager=UIManager.Instance;
         cameraManager=CameraManager.Instance;
         randomNumber=Random.Range(0,9);
+        boxCollider=GetComponent<BoxCollider>();
    }
 
    public void Dead()
    {
         Debug.Log("DEAD");
+        smr.material.color=Color.grey;
+        boxCollider.enabled=false;
+        UpdateManagers();
+        GetComponent<Animator>().enabled=false;
+        canMove=false;
+        enemyRagdoll.ActiveRagdoll();
+        PlayDeadZone();
+        limbs[randomNumber].GetHit();
+
+        StartCoroutine(DeactiveRagdoll());
+
+        if(gameManager.ProgressValue==1f)
+        {
+            gameManager.BarFullPlayParticle();
+            gameManager.IncreaseSwordAreaCollider();
+        }
+
    }
 
    void OnTriggerEnter(Collider other)
@@ -41,25 +63,8 @@ public class EnemyTrigger : MonoBehaviour
             //&& GameManager.Instance.swinging
             if(!hit && GameManager.Instance.canSwing)
             {
-                Debug.Log("BURAYA" + "kez");
-                Dead();
-                UpdateManagers();
-                GetComponent<Animator>().enabled=false;
-                //mr.material.color=Color.grey;
                 hit=true;
-                canMove=false;
-                enemyRagdoll.ActiveRagdoll();
-                PlayDeadZone();
-                limbs[randomNumber].GetHit();
-
-                StartCoroutine(DeactiveRagdoll());
-
-                if(gameManager.ProgressValue==0.5f)
-                {
-                    gameManager.BarFullPlayParticle();
-                    gameManager.IncreaseSwordAreaCollider();
-                }
-
+                Dead();
             }
                 
         }

@@ -22,12 +22,14 @@ public class MoneyManager : MonoBehaviour
 
     void Start()
     {
-        moneyAmount=PlayerPrefs.GetInt("money",moneyAmount);
+        moneyAmount=PlayerPrefs.GetInt("money",1000);
+        UIManager.Instance.UpgradeMoneyText();
     }
 
-    public void UpdateMoney(int increaseMoney)
+    public void UpdateMoney()
     {
-        moneyAmount+=increaseMoney;
+        
+        moneyAmount+=GameManager.Instance.EarningMoney;
         PlayerPrefs.SetInt("money",moneyAmount);
         UIManager.Instance.UpgradeMoneyText();
 

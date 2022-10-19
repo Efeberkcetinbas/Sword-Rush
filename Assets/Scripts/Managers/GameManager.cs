@@ -18,8 +18,10 @@ public class GameManager : MonoBehaviour
     [Header("Times and Values")]
     public float swingTime;
     public float incrementalSwingTime;
+    public float radialSwingTime;
 
     public int EnemyCounter;
+    public int EarningMoney;
     public float increaseValue;
     public float ProgressValue;
 
@@ -58,13 +60,22 @@ public class GameManager : MonoBehaviour
         {
             swinging=false;
             swingTime+=Time.deltaTime;
+            radialSwingTime-=Time.deltaTime;
+
             if(swingTime>incrementalSwingTime)
             {
+                radialSwingTime=incrementalSwingTime;
+                //sword collider acip kapatma yapabilirsin burada
                 swinging=true;
                 swingTime=0;
                 canSwing=false;
+                //Hissiyat acisindan bu daha iyi oldu.
             }
+
+            
         }
+
+        UIManager.Instance.SetRadialProgressBar(radialSwingTime/incrementalSwingTime);
     }
    
     public void UpdateEnemyCounter()
@@ -103,7 +114,9 @@ public class GameManager : MonoBehaviour
 
     public void GetAllPlayerPrefs()
     {
-
+        incrementalSwingTime=PlayerPrefs.GetFloat("incrementals",2);
+        radialSwingTime=incrementalSwingTime;
+        EarningMoney=PlayerPrefs.GetInt("earningMoney",10);
     }
 
     #region Incremental
@@ -111,6 +124,8 @@ public class GameManager : MonoBehaviour
     public void UpdateIncome()
     {
         //Burada Taco Rundaki mekanigi dene.
+        EarningMoney*=2;
+        PlayerPrefs.SetInt("earningMoney",EarningMoney);
     }
 
     public void UpdateHitArea()
@@ -118,10 +133,14 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void UpdateSlashSpeed()
+    public void UpdateFillingStorage(float Amount)
     {
-
+        incrementalSwingTime-=Amount;
+        radialSwingTime=incrementalSwingTime;
+        PlayerPrefs.SetFloat("incrementals",incrementalSwingTime);
+        //Playerprefs cekemedim
     }
+
 
     #endregion
     

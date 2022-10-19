@@ -107,7 +107,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 4.7997897e-11, y: 0.5162243, z: 0.00079999014}
+  m_ConnectedAnchor: {x: 4.7997897e-11, y: 0.5162243, z: 0.00080006}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -462,7 +462,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.3945642, y: 0.24797624, z: -0.00032402202}
+  m_ConnectedAnchor: {x: -0.3945642, y: 0.24797624, z: -0.00032335822}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -588,7 +588,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00000035038101, y: 0.28601518, z: 0.00000022351742}
+  m_ConnectedAnchor: {x: -0.00000008032657, y: 0.28601518, z: 0.000000230968}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -711,7 +711,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00000413119, y: 0.2849828, z: -0.00097263395}
+  m_ConnectedAnchor: {x: -0.00000413119, y: 0.2849828, z: -0.00097302825}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -822,7 +822,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000000003259629, y: 0.5806918, z: 0.00000045262277}
+  m_ConnectedAnchor: {x: -0.000000003259629, y: 0.5806918, z: -9.313226e-10}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -980,7 +980,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.23541205, y: -0.07303226, z: -0.0018737304}
+  m_ConnectedAnchor: {x: 0.23541205, y: -0.07303226, z: -0.001873623}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -1198,7 +1198,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.000000022351742, y: 0.5806805, z: 0.00000053830445}
+  m_ConnectedAnchor: {x: 0.000000022351742, y: 0.5806805, z: -0.0000000037252903}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -1354,7 +1354,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.23541205, y: -0.07303226, z: -0.0047998866}
+  m_ConnectedAnchor: {x: -0.23541205, y: -0.07303226, z: -0.0048004924}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -1541,7 +1541,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.00000041612657, y: 0.28600818, z: -0.00000011175871}
+  m_ConnectedAnchor: {x: 0.000000002401066, y: 0.28600818, z: -0.00000009685755}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -1851,7 +1851,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.3945761, y: 0.24801436, z: -0.00052814244}
+  m_ConnectedAnchor: {x: 0.3945761, y: 0.24801436, z: -0.0005279101}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -1916,7 +1916,7 @@ GameObject:
   - component: {fileID: 7819418315391494604}
   - component: {fileID: 7819418315391494611}
   - component: {fileID: 7819418315391494608}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: UpgradedEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2015,6 +2015,7 @@ MonoBehaviour:
   hit: 0
   canMove: 1
   deadZone: {fileID: 7518796236106049005}
+  smr: {fileID: 6058807270714155871}
   randomNumber: 0
   enemyRagdoll: {fileID: 7819418315391494607}
   limbs:

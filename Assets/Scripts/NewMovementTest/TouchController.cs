@@ -19,7 +19,9 @@ public class TouchController : MonoBehaviour,IDragHandler,IPointerDownHandler,IP
         var delta = eventData.position - _touchPosition;
         Direction = delta.normalized;
         Rotation = delta.normalized;
+        //Bunu deneyebilirsin. Daha iyi oldu gibi.
         GameManager.Instance.Player.GetComponent<PlayerMovement>().playerAnimator.SetBool("attack",false);
+        GameManager.Instance.sword.GetComponent<BoxCollider>().enabled=false;
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -31,6 +33,8 @@ public class TouchController : MonoBehaviour,IDragHandler,IPointerDownHandler,IP
         {
             GameManager.Instance.canSwing=true;
             GameManager.Instance.Player.GetComponent<PlayerMovement>().playerAnimator.SetBool("attack",true);
+            //Bunu deneyebilirsin. Daha iyi oldu gibi.
+            GameManager.Instance.sword.GetComponent<BoxCollider>().enabled=true;
             GameManager.Instance.SwordPlayParticle();
         }
 

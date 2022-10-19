@@ -8,14 +8,11 @@ public class BreakableControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if(collider.CompareTag("Sword"))
+        if(collider.CompareTag("Sword") && GameManager.Instance.canSwing)
         {
-            if(GameManager.Instance.canSwing)
-            {
-                Create(scatteredObject);
-                Destroy(gameObject);
-            }
-            
+            Create(scatteredObject);
+            Destroy(gameObject);
+            CameraManager.Instance.ShakeIt();
         }
     }
 

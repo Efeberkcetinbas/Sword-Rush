@@ -14,6 +14,9 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI moneyText;
 
     public Image ProgressBar;
+    public Image SwordFillBar;
+
+    public RectTransform fader;
 
     public float lerpTime;
 
@@ -47,15 +50,31 @@ public class UIManager : MonoBehaviour
         ProgressBar.color=healthColor;
     }
 
+
+
     /*public void UpgradeFromToLevelText()
     {
         FromLevelText.text = (LevelManager.Instance.levelIndex + 1).ToString();
         ToLevelText.text = (LevelManager.Instance.levelIndex + 2).ToString();
     }*/
 
+    public void SetRadialProgressBar(float val)
+    {
+        SwordFillBar.fillAmount=val;
+    }
+
     public void SetProgressbar(float val)
     {
         //Her mergeledigimizde arttiricagiz.
         ProgressBar.DOFillAmount(val, .25f);
+    }
+
+    public void StartFader()
+    {
+        fader.gameObject.SetActive(true);
+
+        fader.DOScale(new Vector3(3,3,3),1).OnComplete(()=>{
+            fader.DOScale(Vector3.zero,1f).OnComplete(()=>fader.gameObject.SetActive(false));
+        });
     }
 }

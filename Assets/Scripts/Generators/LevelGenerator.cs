@@ -5,11 +5,12 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
 
-    GameObject inGameWallPrefab;
-    GameObject gameEndPrefab;
+    
 
     [SerializeField] private GameObject enemyPrefab;
-        [SerializeField] private GameObject propPrefab;
+    [SerializeField] private GameObject propPrefab;
+
+    [SerializeField] private GameObject bombPrefab;
 
     [Header("Controllers")]
     [SerializeField] PropGenerator propGenerator;
@@ -17,11 +18,13 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] EnemyGenerator enemyGenerator;
 
     [Header("Generation Strings")]
-    [SerializeField] string propGenerateString;
+    [SerializeField] private string propGenerateString;
 
 
     //Konumlari buraya yazalim.
-    [SerializeField] string enemyGenerateString;
+    [SerializeField] private string enemyGenerateString;
+
+    [SerializeField] private string bombGenerateString;
     //[SerializeField] string wallGenerateString;
 
     /*[Header("GameOptions")]
@@ -37,6 +40,11 @@ public class LevelGenerator : MonoBehaviour
         }*/
         if(!string.IsNullOrEmpty(enemyGenerateString)){
             enemyGenerator.Init(enemyGenerateString,enemyPrefab);
+        }
+
+        //Baska scripte gerek kalmadan buradan halledebiliriz.
+        if(!string.IsNullOrEmpty(bombGenerateString)){
+            enemyGenerator.Init(bombGenerateString,bombPrefab);
         }
         //Instantiate(gameEndPrefab,gameEndLocation,Quaternion.identity,transform).transform.eulerAngles = new Vector3(0,-90,0);
     }
