@@ -5,6 +5,7 @@ using UnityEngine;
 public class BreakableControl : MonoBehaviour
 {
     [SerializeField] private GameObject scatteredObject;
+    [SerializeField] private GameObject coinObject;
 
     private void OnTriggerEnter(Collider collider)
     {
@@ -17,8 +18,9 @@ public class BreakableControl : MonoBehaviour
     }
 
 
-    private GameObject Create(GameObject gameObject)
+    private void Create(GameObject newgameObject)
     {
-        return Instantiate(gameObject,transform.position,Quaternion.identity);
+        GameObject clone=(GameObject)Instantiate(newgameObject,transform.position,Quaternion.identity);
+        Destroy(clone,3);
     }
 }

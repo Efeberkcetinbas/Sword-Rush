@@ -53,8 +53,16 @@ public class EnemyTrigger : MonoBehaviour
         {
             gameManager.BarFullPlayParticle();
             gameManager.IncreaseSwordAreaCollider();
+            StartCoroutine(ResetProgressValue());
         }
 
+   }
+
+   private IEnumerator ResetProgressValue()
+   {
+        yield return new WaitForSeconds(2);
+        gameManager.ProgressValue=0;
+        UIManager.Instance.ProgressBar.DOFillAmount(0, .3f);
    }
 
    void OnTriggerEnter(Collider other)

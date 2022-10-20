@@ -21,6 +21,9 @@ public class UIManager : MonoBehaviour
     public Image ProgressBar;
     public Image SwordFillBar;
 
+    //Color change to Green when sword Fill Full
+    public Image FullBar;
+
     public RectTransform fader;
 
     public float lerpTime;

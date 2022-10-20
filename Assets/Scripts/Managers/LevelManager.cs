@@ -43,17 +43,22 @@ public class LevelManager : MonoBehaviour
         UIManager.Instance.UpdateSwingTime(GameManager.Instance.incrementalSwingTime);
         UIManager.Instance.UpdateEarn();
         UIManager.Instance.UpdateArea();
+
+        GameManager.Instance.ResetGameEnds();
+
         for (int i = 0; i < levels.Count; i++)
         {
             levels[i].SetActive(false);
         }
         levels[levelIndex].SetActive(true);
         GameManager.Instance.UpdateEnemyCounter();
+        GameManager.Instance.UpdateFinishPos();
         //GameManager.Instance.OpenIncrementalPanel();
         StartCoroutine(CallCheckButtons());
 
         GameManager.Instance.isPlayerDead=false;
         GameManager.Instance.Player.GetComponent<Animator>().SetBool("playerDead",false);
+        GameManager.Instance.Player.GetComponent<Animator>().SetBool("success",false);
 
         //DotweenManager.Instance.FadeTween(fader, 0, 0, 0, .25f);
     }

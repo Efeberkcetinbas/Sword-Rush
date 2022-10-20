@@ -10,7 +10,8 @@ public class CameraManager : MonoBehaviour
 
     public Camera mainCamera;
 
-    [SerializeField] CinemachineVirtualCamera cm;
+    public CinemachineVirtualCamera cm;
+    public CinemachineVirtualCamera cm2;
     //[SerializeField] CinemachineVirtualCamera cm2;
 
 
@@ -46,14 +47,16 @@ public class CameraManager : MonoBehaviour
    
     public void ResetCamera()
     {
-        //cm2.m_Priority = 9;
+        cm2.m_Priority = 5;
     }
 
-    public void ChangeCameras(float fieldOfView, float duration, float xPos, float yPos, float zPos, float xRot, float yRot)
+    public void ChangeCameras(float fieldOfView, float duration,GameObject gameObject)
     {
-        cmCamera.DOLocalMove(new Vector3(xPos, yPos, zPos), duration);
-        cmCamera.DOLocalRotate(new Vector3(xRot, yRot, 0), duration);
-        //DOTween.To(() => cm.m_Lens.FieldOfView, x => cm.m_Lens.FieldOfView = x, fieldOfView, duration);
+        //gameObject.transform.rotation=Quaternion.Euler(0,180,0);
+        cm2.m_Priority=15;
+        DOTween.To(() => cm2.m_Lens.FieldOfView, x => cm2.m_Lens.FieldOfView = x, fieldOfView, duration);
+        //cmCamera.DOLocalMove(new Vector3(xPos, yPos, zPos), duration);
+        //cmCamera.DOLocalRotate(new Vector3(xRot, yRot, 0), duration);
     }
 
     public void ChangeCameraAngle(float fieldOfView, float duration, float xPos, float yPos, float zPos, float xRot, float yRot, int priority)

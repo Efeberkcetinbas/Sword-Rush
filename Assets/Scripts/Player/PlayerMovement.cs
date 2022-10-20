@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if(!GameManager.Instance.isPlayerDead)
+        if(!GameManager.Instance.isPlayerDead || !GameManager.Instance.isGameEnd)
         {
             if (floatingJoystick.Vertical != 0 || floatingJoystick.Horizontal != 0)
             {

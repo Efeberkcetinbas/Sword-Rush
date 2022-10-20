@@ -24,9 +24,10 @@ public class InteractUpgrade : MonoBehaviour
     public TextMeshProUGUI areaText;
     public TextMeshProUGUI earnText;
 
-    private Color areaColor;
-    private Color timeColor;
-    private Color earnColor;    
+    [Header("Images")]
+    [SerializeField] private Image timeDecreaseImage;
+    [SerializeField] private Image areaImage;
+    [SerializeField] private Image earnImage;    
 
     MoneyManager moneyManager;
     void Start()
@@ -53,6 +54,7 @@ public class InteractUpgrade : MonoBehaviour
             PlayerPrefs.SetFloat("timeDecrease",timeDecreasePrice);
             UpdateText(timeText,timeDecreasePrice);
             MakeTween(timeDecreaseButton.gameObject);
+            SoundManager.Instance.Play("buttonSound");
         }
 
         else
@@ -73,7 +75,7 @@ public class InteractUpgrade : MonoBehaviour
             PlayerPrefs.SetFloat("area",areaPrice);
             UpdateText(areaText,areaPrice);
             MakeTween(areaButton.gameObject);
-
+            SoundManager.Instance.Play("buttonSound");
             //Check methodu yaz. Her para arttiginda bunlari kontrol etsin. Check methodunu her level degistiginde cagir
         }
 
@@ -94,6 +96,7 @@ public class InteractUpgrade : MonoBehaviour
             PlayerPrefs.SetFloat("earn",earnPrice);
             UpdateText(earnText,earnPrice);
             MakeTween(earnButton.gameObject);
+            SoundManager.Instance.Play("buttonSound");
         }
 
         else
@@ -119,11 +122,16 @@ public class InteractUpgrade : MonoBehaviour
         TextP.text=price.ToString();
     }
 
-    private void ChangeColor(Button buttonName,Color color)
+    private void ChangeButtonColor(Button buttonName,Color color)
     {
         ColorBlock cb=buttonName.colors;
         cb.normalColor=color;
         buttonName.colors=cb;
+    }
+
+    private void ChangeImageColor(Image imageName, Color color)
+    {
+        imageName.color=color;
     }
 
     private void MakeTween(GameObject gameObject)
@@ -137,42 +145,47 @@ public class InteractUpgrade : MonoBehaviour
         if(moneyManager.moneyAmount>=areaPrice)
         {
             ButtonActive(areaButton,true);
-            ChangeColor(areaButton,Color.yellow);
+            ChangeButtonColor(areaButton,Color.yellow);
+            ChangeImageColor(areaImage,Color.yellow);
         }
 
         if(moneyManager.moneyAmount<areaPrice)
         {
             ButtonActive(areaButton,false);
-            ChangeColor(areaButton,Color.grey);
+            ChangeButtonColor(areaButton,Color.grey);
+            ChangeImageColor(areaImage,Color.grey);
 
         }
         
         if(moneyManager.moneyAmount>=earnPrice)
         {
             ButtonActive(earnButton,true);
-            ChangeColor(earnButton,Color.yellow);
+            ChangeButtonColor(earnButton,Color.yellow);
+            ChangeImageColor(earnImage,Color.yellow);
 
         }
         
         if(moneyManager.moneyAmount<earnPrice)
         {
             ButtonActive(earnButton,false);
-            ChangeColor(earnButton,Color.grey);
+            ChangeButtonColor(earnButton,Color.grey);
+            ChangeImageColor(earnImage,Color.grey);
 
         }
 
         if(moneyManager.moneyAmount>=timeDecreasePrice)
         {
             ButtonActive(timeDecreaseButton,true);
-            ChangeColor(timeDecreaseButton,Color.yellow);
+            ChangeButtonColor(timeDecreaseButton,Color.yellow);
+            ChangeImageColor(timeDecreaseImage,Color.yellow);
 
         }
 
         if(moneyManager.moneyAmount<timeDecreasePrice)
         {
             ButtonActive(timeDecreaseButton,false);
-            ChangeColor(timeDecreaseButton,Color.grey);
-
+            ChangeButtonColor(timeDecreaseButton,Color.grey);
+            ChangeImageColor(timeDecreaseImage,Color.grey);
         }
 
     }
