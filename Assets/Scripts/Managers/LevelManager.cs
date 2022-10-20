@@ -51,6 +51,10 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.UpdateEnemyCounter();
         //GameManager.Instance.OpenIncrementalPanel();
         StartCoroutine(CallCheckButtons());
+
+        GameManager.Instance.isPlayerDead=false;
+        GameManager.Instance.Player.GetComponent<Animator>().SetBool("playerDead",false);
+
         //DotweenManager.Instance.FadeTween(fader, 0, 0, 0, .25f);
     }
 

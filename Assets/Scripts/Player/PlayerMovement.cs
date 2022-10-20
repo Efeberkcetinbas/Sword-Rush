@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody playerRigidBody;
     internal Animator playerAnimator;
 
+
     //[SerializeField] private TouchController _touchController;
 
 
@@ -17,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     {
         playerRigidBody = GetComponent<Rigidbody>();
         playerAnimator = GetComponent<Animator>();
+
         //speed =GameManager.Instance.playerSpeed;
     }
 
@@ -30,30 +32,32 @@ public class PlayerMovement : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (floatingJoystick.Vertical != 0 || floatingJoystick.Horizontal != 0)
+        if(!GameManager.Instance.isPlayerDead)
         {
-            Vector3 direction = Vector3.forward * floatingJoystick.Vertical * speed + Vector3.right * floatingJoystick.Horizontal * speed;
-
-            transform.position += direction * speed * Time.deltaTime;
-            playerRigidBody.velocity = direction;
-
-            if (speed != 0)
+            if (floatingJoystick.Vertical != 0 || floatingJoystick.Horizontal != 0)
             {
-                if(playerRigidBody.velocity != Vector3.zero)
+                Vector3 direction = Vector3.forward * floatingJoystick.Vertical * speed + Vector3.right * floatingJoystick.Horizontal * speed;
+
+                transform.position += direction * speed * Time.deltaTime;
+                playerRigidBody.velocity = direction;
+
+                if (speed != 0)
                 {
-                    playerAnimator.SetBool("attack",false);
-                    transform.rotation = Quaternion.LookRotation(playerRigidBody.velocity);
+                    if(playerRigidBody.velocity != Vector3.zero)
+                    {
+                        playerAnimator.SetBool("attack",false);
+                        transform.rotation = Quaternion.LookRotation(playerRigidBody.velocity);
+                    }
                 }
             }
+            else if (floatingJoystick.Vertical == 0 && floatingJoystick.Horizontal == 0)
+            {
+                playerAnimator.SetBool("attack",false);
+                playerRigidBody.velocity = new Vector3(0, 0, 0);
+            }
+            newSpeed = playerRigidBody.velocity.sqrMagnitude;
+            playerAnimator.SetFloat("speed", Mathf.Abs(newSpeed));
         }
-        else if (floatingJoystick.Vertical == 0 && floatingJoystick.Horizontal == 0)
-        {
-            playerAnimator.SetBool("attack",false);
-            playerRigidBody.velocity = new Vector3(0, 0, 0);
-        }
-        newSpeed = playerRigidBody.velocity.sqrMagnitude;
-        playerAnimator.SetFloat("speed", Mathf.Abs(newSpeed));
-
     }
 
     /*public void DoSwordSwing()

@@ -47,7 +47,7 @@ public class EnemyTrigger : MonoBehaviour
         PlayDeadZone();
         limbs[randomNumber].GetHit();
         isDead=true;
-        StartCoroutine(DeactiveRagdoll());
+        StartCoroutine(DeactiveRagdollCar());
 
         if(gameManager.ProgressValue==1f)
         {
@@ -72,6 +72,8 @@ public class EnemyTrigger : MonoBehaviour
         if(other.CompareTag("Player") && !GameManager.Instance.canDoDamage)
         {
             Debug.Log("PLAYER HIT ");
+            GameManager.Instance.isPlayerDead=true;
+            GameManager.Instance.Player.GetComponent<Animator>().SetBool("playerDead",true);
         }
     }
 
@@ -86,7 +88,7 @@ public class EnemyTrigger : MonoBehaviour
 
     
 
-    IEnumerator DeactiveRagdoll()
+    IEnumerator DeactiveRagdollCar()
     {
         yield return new WaitForSeconds(2f);
         enemyRagdoll.DeactiveRagdoll();

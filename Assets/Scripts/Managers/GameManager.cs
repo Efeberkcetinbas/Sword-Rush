@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     //canSwing kesme hareketine yariyor.
     public bool canSwing=true;
     public bool canDoDamage=false;
+    public bool isPlayerDead=false;
 
     [Header("Times and Values")]
     public float swingTime;

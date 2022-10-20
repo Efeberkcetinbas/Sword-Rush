@@ -29,14 +29,22 @@ public class TouchController : MonoBehaviour,IDragHandler,IPointerDownHandler,IP
         Direction = Vector2.zero;
         //Debug.Log("RELEASE");
         //GameManager.Instance.swinging=true;
-        if(GameManager.Instance.swinging)
+        if(GameManager.Instance.swinging && !GameManager.Instance.isPlayerDead)
         {
             GameManager.Instance.canSwing=true;
             GameManager.Instance.Player.GetComponent<PlayerMovement>().playerAnimator.SetBool("attack",true);
+            StartCoroutine(ActiveCollider());
             //Bunu deneyebilirsin. Daha iyi oldu gibi.
-            GameManager.Instance.sword.GetComponent<BoxCollider>().enabled=true;
+            //GameManager.Instance.sword.GetComponent<BoxCollider>().enabled=true;
             GameManager.Instance.SwordPlayParticle();
         }
 
+    }
+
+    //Sword tam inerken bu efekti vermek icin kullaniyorum. Hanigis daha iyi sekilde duruyorsa ona karar ver. Belki gecikmeli olmasi iyi veya kotu etkiler.
+    IEnumerator ActiveCollider()
+    {
+        yield return new WaitForSeconds(.2f);
+        GameManager.Instance.sword.GetComponent<BoxCollider>().enabled=true;
     }
 }

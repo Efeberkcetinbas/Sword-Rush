@@ -265,7 +265,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1c30e388bb56c3e41af86bac6bfe0be5, type: 2}
+  - {fileID: 2100000, guid: bf003ff880c86754cac86c337730a316, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1917,7 +1917,7 @@ GameObject:
   - component: {fileID: 7819418315391494611}
   - component: {fileID: 7819418315391494608}
   m_Layer: 8
-  m_Name: UpgradedEnemy
+  m_Name: EnemyMove
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

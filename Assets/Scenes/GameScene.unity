@@ -496,6 +496,7 @@ MonoBehaviour:
   swinging: 0
   canSwing: 1
   canDoDamage: 0
+  isPlayerDead: 0
   swingTime: 0
   incrementalSwingTime: 2
   radialSwingTime: 2
@@ -2681,7 +2682,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &884426919
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6265,6 +6266,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 470083403, guid: d27661016a2b23442b43392b7ad45bfb, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 470083403, guid: d27661016a2b23442b43392b7ad45bfb, type: 3}
+      propertyPath: m_FillOrigin
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1013679840, guid: d27661016a2b23442b43392b7ad45bfb, type: 3}
       propertyPath: m_Camera
       value: 
@@ -6275,7 +6284,7 @@ PrefabInstance:
       objectReference: {fileID: 963194228}
     - target: {fileID: 1919377596, guid: d27661016a2b23442b43392b7ad45bfb, type: 3}
       propertyPath: m_FillAmount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1919377596, guid: d27661016a2b23442b43392b7ad45bfb, type: 3}
       propertyPath: m_FillOrigin
