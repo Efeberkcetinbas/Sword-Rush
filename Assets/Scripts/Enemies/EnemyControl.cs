@@ -52,11 +52,14 @@ public class EnemyControl : MonoBehaviour
         {
             stop=false;
             enemyTrigger.canMove=true;
+            agent.isStopped=false;
         }
         else
         {
             stop=true;
             enemyTrigger.canMove=false;
+            agent.isStopped=true;
+
         }
             
         
