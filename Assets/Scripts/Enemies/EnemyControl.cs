@@ -41,7 +41,8 @@ public class EnemyControl : MonoBehaviour
 
     void Update()
     {
-        if(!enemyTrigger.isDead)
+
+        if(!enemyTrigger.isDead && !GameManager.Instance.isGameEnd)
         {
             playerInSightRange=Physics.CheckSphere(transform.position,sightRange,whatIsPlayer);
             if(!playerInSightRange || GameManager.Instance.isPlayerHide) Patroling();
@@ -50,9 +51,19 @@ public class EnemyControl : MonoBehaviour
 
         if(playerInSightRange)
         {
-            stop=false;
-            enemyTrigger.canMove=true;
-            agent.isStopped=false;
+            if(!GameManager.Instance.isGameEnd)
+            {
+                stop=false;
+                enemyTrigger.canMove=true;
+                agent.isStopped=false;
+            }
+
+            else
+            {
+                animator.SetBool("move", false);
+                agent.isStopped=true;
+            }
+            
         }
         else
         {
@@ -104,6 +115,10 @@ public class EnemyControl : MonoBehaviour
             LookingAt();
             animator.SetBool("move", true);
         }
+
+
+        
+            
         
     }
 

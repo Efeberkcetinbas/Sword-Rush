@@ -29,7 +29,7 @@ public class TouchController : MonoBehaviour,IDragHandler,IPointerDownHandler,IP
         Direction = Vector2.zero;
         //Debug.Log("RELEASE");
         //GameManager.Instance.swinging=true;
-        if(GameManager.Instance.swinging && !GameManager.Instance.isPlayerDead)
+        if(GameManager.Instance.swinging && !GameManager.Instance.isPlayerDead && !GameManager.Instance.isGameEnd)
         {
             GameManager.Instance.canSwing=true;
             GameManager.Instance.Player.GetComponent<PlayerMovement>().playerAnimator.SetBool("attack",true);

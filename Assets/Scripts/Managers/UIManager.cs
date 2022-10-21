@@ -19,14 +19,17 @@ public class UIManager : MonoBehaviour
 
 
     public Image ProgressBar;
+
+    //RadialProgress Bar
     public Image SwordFillBar;
 
     //Color change to Green when sword Fill Full
     public Image FullBar;
 
+    public Image playerHealthImage;
     public RectTransform fader;
 
-    public float lerpTime;
+    //public float lerpTime;
 
     [Header("Incrementals")]
     public TextMeshProUGUI incrementalSwingTime;
@@ -55,12 +58,13 @@ public class UIManager : MonoBehaviour
         moneyText.text = PlayerPrefs.GetInt("money").ToString();
     }
 
-    public void ColorChanger()
+    public void ColorChanger(Image image,Color color1,Color color2,float thislerpTime)
     {
         //Matematiksel bir formul ile yaklas buraya.
-        lerpTime+=0.1f;
-        Color healthColor=Color.Lerp(Color.yellow,Color.red,(lerpTime));
-        ProgressBar.color=healthColor;
+        float lerpTime=0;
+        lerpTime+=thislerpTime;
+        Color healthColor=Color.Lerp(color1,color2,(lerpTime));
+        image.color=healthColor;
     }
 
     public void UpdateSwingTime(float time)
@@ -78,6 +82,11 @@ public class UIManager : MonoBehaviour
     public void UpdateArea()
     {
         swordAreaText.text=GameManager.Instance.SwordArea.ToString();
+    }
+
+    public void UpdateHealthBar(float val)
+    {
+        playerHealthImage.DOFillAmount(val,0.05f);
     }
 
 

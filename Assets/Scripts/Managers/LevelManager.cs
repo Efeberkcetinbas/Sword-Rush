@@ -56,6 +56,8 @@ public class LevelManager : MonoBehaviour
         //GameManager.Instance.OpenIncrementalPanel();
         StartCoroutine(CallCheckButtons());
 
+        GameManager.Instance.tapToPlayButton.SetActive(true);
+        GameManager.Instance.isGameEnd=true;
         GameManager.Instance.isPlayerDead=false;
         GameManager.Instance.Player.GetComponent<Animator>().SetBool("playerDead",false);
         GameManager.Instance.Player.GetComponent<Animator>().SetBool("success",false);

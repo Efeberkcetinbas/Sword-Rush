@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject failPanel;
     public GameObject gameEndCanvas;
     public GameObject finishLineObject;
+    public GameObject tapToPlayButton;
 
 
     [Header("Bools")]
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
     public bool canDoDamage=false;
     public bool isPlayerDead=false;
     public bool isGameEnd=false;
+    public bool canProgressContinue=true;
 
     [Header("Times and Values")]
     public float swingTime;
@@ -181,7 +183,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("VAL : " + val);
         //Buyuk ihtimal buradan dolayi dotween hatasi aliyorum. Buraya bak !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         sword.transform.DOScale(new Vector3(val*20,val*20,val*20),1f).OnComplete(()=>sword.transform.DOScale(new Vector3(val,val,val+2),1f));
-        
+    }
+
+    public void TapToPlay()
+    {
+        isGameEnd=false;
+        tapToPlayButton.SetActive(false);
     }
 
     public void GetAllPlayerPrefs()

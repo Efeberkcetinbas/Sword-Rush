@@ -51,7 +51,8 @@ public class EnemyTrigger : MonoBehaviour
         {
             gameManager.BarFullPlayParticle();
             gameManager.IncreaseSwordAreaCollider();
-            StartCoroutine(ResetProgressValue());
+            ResetProgressVal();
+            //StartCoroutine(ResetProgressValue());
         }
 
    }
@@ -61,6 +62,17 @@ public class EnemyTrigger : MonoBehaviour
         yield return new WaitForSeconds(2);
         gameManager.ProgressValue=0;
         UIManager.Instance.ProgressBar.DOFillAmount(0, .3f);
+   }
+
+    //Yukaridaki method ya da bu
+   private void ResetProgressVal()
+   {
+        gameManager.canProgressContinue=false;
+        gameManager.ProgressValue=0;
+        UIManager.Instance.ProgressBar.DOFillAmount(0,.5f).OnComplete(()=>
+        {
+            gameManager.canProgressContinue=true;
+        });
    }
 
    void OnTriggerEnter(Collider other)
@@ -75,19 +87,34 @@ public class EnemyTrigger : MonoBehaviour
             }
                 
         }
-        if(other.CompareTag("Player") && !GameManager.Instance.canDoDamage)
+        if(other.CompareTag("Player") && !gameManager.canDoDamage && !gameManager.isPlayerDead)
         {
-            Debug.Log("PLAYER HIT ");
-            GameManager.Instance.isPlayerDead=true;
-            GameManager.Instance.Player.GetComponent<Animator>().SetBool("playerDead",true);
+            
+            other.gameObject.GetComponent<PlayerTrigger>().HealthChange(1);
+            uiManager.UpdateHealthBar((float)other.gameObject.GetComponent<PlayerTrigger>().currentHealth/(float)other.gameObject.GetComponent<PlayerTrigger>().maxHealth);
+            uiManager.ColorChanger(uiManager.playerHealthImage,Color.green,Color.red,0.25f);
+
+            if( other.gameObject.GetComponent<PlayerTrigger>().currentHealth<=0)
+            {
+                uiManager.UpdateHealthBar(0);
+                Debug.Log("PLAYER DEAD ");
+                gameManager.isPlayerDead=true;
+                gameManager.isGameEnd=true;
+                gameManager.Player.GetComponent<Animator>().SetBool("playerDead",true);
+                
+            }
         }
     }
 
     private void UpdateManagers()
     {
-        gameManager.ProgressValue+=1/(float)gameManager.EnemyCounter;
-        uiManager.SetProgressbar(gameManager.ProgressValue);
-        uiManager.ColorChanger();
+        if(gameManager.canProgressContinue)
+        {
+            gameManager.ProgressValue+=1/(float)gameManager.EnemyCounter;
+            uiManager.SetProgressbar(gameManager.ProgressValue);
+            uiManager.ColorChanger(uiManager.ProgressBar,Color.yellow,Color.red,0.1f);
+        }
+        
         cameraManager.ShakeIt();
 
     }
