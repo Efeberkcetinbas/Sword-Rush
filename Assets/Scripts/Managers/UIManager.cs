@@ -21,10 +21,10 @@ public class UIManager : MonoBehaviour
     public Image ProgressBar;
 
     //RadialProgress Bar
-    public Image SwordFillBar;
+    //public Image SwordFillBar;
 
     //Color change to Green when sword Fill Full
-    public Image FullBar;
+    //public Image FullBar;
 
     public Image playerHealthImage;
     public RectTransform fader;
@@ -97,10 +97,10 @@ public class UIManager : MonoBehaviour
         ToLevelText.text = (LevelManager.Instance.levelIndex + 2).ToString();
     }*/
 
-    public void SetRadialProgressBar(float val)
+    /*public void SetRadialProgressBar(float val)
     {
         SwordFillBar.fillAmount=val;
-    }
+    }*/
 
     public void SetProgressbar(float val)
     {

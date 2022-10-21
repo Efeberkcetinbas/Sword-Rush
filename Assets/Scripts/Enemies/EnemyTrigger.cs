@@ -40,6 +40,7 @@ public class EnemyTrigger : MonoBehaviour
         boxCollider.enabled=false;
         UpdateManagers();
         GetComponent<Animator>().enabled=false;
+        GetComponent<EnemyControl>().agent.isStopped=true;
         canMove=false;
         enemyRagdoll.ActiveRagdoll();
         //PlayDeadZone();
@@ -74,7 +75,19 @@ public class EnemyTrigger : MonoBehaviour
             gameManager.canProgressContinue=true;
         });
    }
-
+    // Stayi dene bir de
+    
+   /*void OnTriggerStay(Collider other)
+   {
+        if(other.CompareTag("Sword"))
+        {
+            if(!hit && GameManager.Instance.canDoDamage)
+            {
+                hit=true;
+                Dead();
+            }
+        }
+   } */
    void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Sword"))

@@ -16,8 +16,8 @@ public class LookToMain : MonoBehaviour
 
     void Update()
     {
-        if(mLookAt)
-            localTrans.LookAt(2*localTrans.position-mLookAt.position);
+        transform.LookAt(transform.position+mLookAt.transform.rotation*Vector3.back,
+        mLookAt.transform.rotation*Vector3.down);
     }
 
 }

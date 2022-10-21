@@ -11,6 +11,7 @@ public class FinishLineControl : MonoBehaviour
         if(collider.CompareTag("Player"))
         {
             GameManager.Instance.isGameEnd=true;
+            GameManager.Instance.sword.transform.gameObject.SetActive(false);
             GameManager.Instance.OpenSuccessLevel();
             CameraManager.Instance.ChangeCameras(45,0.5f,GameManager.Instance.Player);
         }

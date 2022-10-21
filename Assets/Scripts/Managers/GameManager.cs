@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         GetAllPlayerPrefs();
-        sword.transform.localScale=new Vector3(0.2f+SwordArea,0.2f+SwordArea,0.4f+SwordArea);
+        sword.transform.localScale=new Vector3(1f+SwordArea,1,1+SwordArea);
     }
 
     private void Update()
@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
             radialSwingTime-=Time.deltaTime;
             damageTime+=Time.deltaTime;
             canDoDamage=true;
-            UIManager.Instance.FullBar.color=new Color(1f,1f,1f,0.2392f);
+            //UIManager.Instance.FullBar.color=new Color(1f,1f,1f,0.2392f);
             if(damageTime>SelectDamageTime)
                 canDoDamage=false;
             
@@ -99,14 +99,14 @@ public class GameManager : MonoBehaviour
                 swinging=true;
                 swingTime=0;
                 canSwing=false;
-                UIManager.Instance.FullBar.color=new Color(0,1f,0.0071f,0.2392f);
+                //UIManager.Instance.FullBar.color=new Color(0,1f,0.0071f,0.2392f);
                 //Hissiyat acisindan bu daha iyi oldu.
             }
 
             
         }
 
-        UIManager.Instance.SetRadialProgressBar(radialSwingTime/incrementalSwingTime);
+        //UIManager.Instance.SetRadialProgressBar(radialSwingTime/incrementalSwingTime);
     }
    
     public void UpdateEnemyCounter()
@@ -180,9 +180,16 @@ public class GameManager : MonoBehaviour
     {
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         var val=sword.transform.localScale.x;
+        float oldSelectedTime=SelectDamageTime;
+        SelectDamageTime=3;
         Debug.Log("VAL : " + val);
         //Buyuk ihtimal buradan dolayi dotween hatasi aliyorum. Buraya bak !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        sword.transform.DOScale(new Vector3(val*20,val*20,val*20),1f).OnComplete(()=>sword.transform.DOScale(new Vector3(val,val,val+2),1f));
+        sword.transform.DOScale(new Vector3(val*10,1,val*10),1f).OnComplete(()=>{
+            sword.transform.DOScale(new Vector3(val,1,val),1f).OnComplete(()=>{
+                SelectDamageTime=oldSelectedTime;
+            });
+        });
+        //sword.transform.DOScale(new Vector3(val*7,1,val*7),1f).OnComplete(()=>sword.transform.DOScale(new Vector3(val,1,val),1f));
     }
 
     public void TapToPlay()
@@ -222,7 +229,7 @@ public class GameManager : MonoBehaviour
     {
         SwordArea=SwordArea+0.1f;
         Debug.Log("SWORD LOCAL SCALE :" + SwordArea);
-        sword.transform.localScale=new Vector3(0.2f+SwordArea,0.2f+SwordArea,0.4f+SwordArea);
+        sword.transform.localScale=new Vector3(1+SwordArea,1,1+SwordArea);
         PlayerPrefs.SetFloat("areaHit",SwordArea);
         interactUpgrade.CheckButtonsInteraction();
         UIManager.Instance.UpdateArea();
