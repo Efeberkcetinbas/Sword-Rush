@@ -2015,7 +2015,6 @@ MonoBehaviour:
   hit: 0
   canMove: 1
   isDead: 0
-  deadZone: {fileID: 7518796236106049005}
   smr: {fileID: 6058807270714155871}
   randomNumber: 0
   enemyRagdoll: {fileID: 7819418315391494607}
@@ -2050,7 +2049,7 @@ MonoBehaviour:
     m_Bits: 128
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 0
-  sightRange: 0
+  sightRange: 7
   playerInSightRange: 0
   enemyTrigger: {fileID: 7819418315391494604}
 --- !u!195 &7819418315391494608
@@ -2121,8 +2120,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.39457092, y: 0.6060368, z: 0.39457017}
-  m_Center: {x: -0.1972896, y: 0.22998604, z: -0.0024002492}
+  m_Size: {x: 0.75637335, y: 2.6590574, z: 0.39457017}
+  m_Center: {x: -0.01638852, y: 0.13743094, z: -0.0024002444}
 --- !u!54 &8016493966267910810
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2359,10 +2358,5 @@ PrefabInstance:
 --- !u!4 &7518796236087700721 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6666323641661602223, guid: b33617b5b86d25949a9a8fdfebc2676c, type: 3}
-  m_PrefabInstance: {fileID: 3808826336219895134}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &7518796236106049005 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6666323641647444147, guid: b33617b5b86d25949a9a8fdfebc2676c, type: 3}
   m_PrefabInstance: {fileID: 3808826336219895134}
   m_PrefabAsset: {fileID: 0}

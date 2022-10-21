@@ -9,13 +9,12 @@ public class EnemyTrigger : MonoBehaviour
    public bool canMove=true;
    public bool isDead=false;
 
-   [SerializeField] private ParticleSystem deadZone;
+   //[SerializeField] private ParticleSystem deadZone;
 
    [SerializeField] private SkinnedMeshRenderer smr;
 
    private BoxCollider boxCollider;
 
-   //private MeshRenderer mr;
 
    public int randomNumber;
 
@@ -27,7 +26,6 @@ public class EnemyTrigger : MonoBehaviour
     private CameraManager cameraManager;
    void Start()
    {
-        //mr=GetComponent<MeshRenderer>();
         gameManager=GameManager.Instance;
         uiManager=UIManager.Instance;
         cameraManager=CameraManager.Instance;
@@ -44,7 +42,7 @@ public class EnemyTrigger : MonoBehaviour
         GetComponent<Animator>().enabled=false;
         canMove=false;
         enemyRagdoll.ActiveRagdoll();
-        PlayDeadZone();
+        //PlayDeadZone();
         limbs[randomNumber].GetHit();
         isDead=true;
         StartCoroutine(DeactiveRagdollCar());
@@ -104,9 +102,9 @@ public class EnemyTrigger : MonoBehaviour
         //Destroy(gameObject);
     }
 
-    private void PlayDeadZone()
+    /*private void PlayDeadZone()
     {
         deadZone.Play();
         SoundManager.Instance.Play("magic");
-    }
+    }*/
 }
