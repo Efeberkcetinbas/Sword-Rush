@@ -21,7 +21,7 @@ public class TouchController : MonoBehaviour,IDragHandler,IPointerDownHandler,IP
         Rotation = delta.normalized;
         //Bunu deneyebilirsin. Daha iyi oldu gibi.
         GameManager.Instance.Player.GetComponent<PlayerMovement>().playerAnimator.SetBool("attack",false);
-        GameManager.Instance.sword.GetComponent<SphereCollider>().enabled=false;
+        //GameManager.Instance.sword.GetComponent<SphereCollider>().enabled=false;
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -34,7 +34,8 @@ public class TouchController : MonoBehaviour,IDragHandler,IPointerDownHandler,IP
             GameManager.Instance.canSwing=true;
             GameManager.Instance.Player.GetComponent<PlayerMovement>().playerAnimator.SetBool("attack",true);
             //GameManager.Instance.sword.GetComponent<SphereCollider>().enabled=true;
-            StartCoroutine(Rotate(0.5f));
+            //Buradan sureyi oynayarak en iyi sureye karar ver. 0.5f
+            StartCoroutine(Rotate(0.35f));
             StartCoroutine(ActiveCollider());
             //Bunu deneyebilirsin. Daha iyi oldu gibi.
             //GameManager.Instance.sword.GetComponent<BoxCollider>().enabled=true;

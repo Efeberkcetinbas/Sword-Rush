@@ -83,20 +83,22 @@ public class EnemyTrigger : MonoBehaviour
    }
     // Stayi dene bir de
     
-   /*void OnTriggerStay(Collider other)
+   void OnTriggerStay(Collider other)
    {
         if(other.CompareTag("Sword"))
         {
+            gameManager.isAnExplotion=false;
+
             if(!hit && GameManager.Instance.canDoDamage)
             {
                 hit=true;
                 Dead();
             }
         }
-   } */
+   } 
    void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Sword"))
+        /*if(other.CompareTag("Sword"))
         {
             gameManager.isAnExplotion=false;
             //&& GameManager.Instance.swinging
@@ -106,7 +108,8 @@ public class EnemyTrigger : MonoBehaviour
                 Dead();
             }
                 
-        }
+        }*/
+        
         if(other.CompareTag("Player") && !gameManager.canDoDamage && !gameManager.isPlayerDead)
         {
             

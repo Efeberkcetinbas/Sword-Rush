@@ -185,7 +185,9 @@ public class GameManager : MonoBehaviour
             Destroy(generatedObjects[i]);
         }
 
-        generatedObjects.Clear();
+        generatedObjects=new List<GameObject>();
+        // Bundan daha hizli ve asagidaki daha cok memory kullaniyor
+        //generatedObjects.Clear();
 
     }
     private IEnumerator CallGenerate()
