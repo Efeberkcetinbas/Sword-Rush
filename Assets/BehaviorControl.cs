@@ -12,7 +12,9 @@ public class BehaviorControl : StateMachineBehaviour
 
         //farklı cesitlerde animasyonlarimiz Random sekilde geliyor. Istersek sirasiyla da yapabiliriz.
 
-        condition=!condition;
+        //condition=!condition;
+
+        condition=false;
 
         if(condition)
             animator.SetFloat("sword",0);

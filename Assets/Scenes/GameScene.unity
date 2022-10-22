@@ -603,7 +603,7 @@ MonoBehaviour:
   propGenerateString: (2.757,-0.339,0.9)|(2.757,-0.339,1.1)|(2.757,-0.339,1.3)|(2.757,-0.339,1.5)
   enemyGenerateString: (0,-0.57,-0.31)|(0.5,-0.57,-0.31)|(1,-0.57,-0.31)|(-0.5,-0.57,-0.31)|(-1,-0.57,-0.31)|(0.5,-0.57,0.19)|(-0.5,-0.57,0.19)|(0,-0.57,0.19)|(1,-0.57,0.19)|(-1,-0.57,0.19)|(-1,-0.57,0.69)|(-0.5,-0.57,0.69)|(0,-0.57,0.69)|(0.5,-0.57,0.69)|(1,-0.57,0.69)
   moveEnemyGenerateString: (0,-0.563,6.5)|(0.5,-0.563,6.5)|(1,-0.563,6.5)|(-0.5,-0.563,6.5)|(-1,-0.563,6.5)
-  bombGenerateString: (-2,-0.27,4.7)|(1.93,-0.27,-8.06)
+  bombGenerateString: 
   crateGenerateString: (-2,-0.537,1.54)|(2.28,-0.537,4.25)
 --- !u!1 &145938364
 GameObject:
@@ -8164,7 +8164,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2119027111}
-  m_LocalRotation: {x: 0.2897841, y: -0.00000002852357, z: 0.00000000863624, w: 0.95709205}
+  m_LocalRotation: {x: 0.2897841, y: 0.00000002852357, z: -0.00000000863624, w: 0.95709205}
   m_LocalPosition: {x: 0, y: 1.631, z: -5.7460003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8394,6 +8394,22 @@ PrefabInstance:
       propertyPath: mLookAt
       value: 
       objectReference: {fileID: 963194228}
+    - target: {fileID: 42668891, guid: d27661016a2b23442b43392b7ad45bfb, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 108
+      objectReference: {fileID: 0}
+    - target: {fileID: 42668891, guid: d27661016a2b23442b43392b7ad45bfb, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 108
+      objectReference: {fileID: 0}
+    - target: {fileID: 42668892, guid: d27661016a2b23442b43392b7ad45bfb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 84487d73ca4b791498332d8f6858417f, type: 3}
+    - target: {fileID: 905517048, guid: d27661016a2b23442b43392b7ad45bfb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1013679840, guid: d27661016a2b23442b43392b7ad45bfb, type: 3}
       propertyPath: m_Camera
       value: 
@@ -8402,6 +8418,46 @@ PrefabInstance:
       propertyPath: mLookAt
       value: 
       objectReference: {fileID: 963194228}
+    - target: {fileID: 313780279156686595, guid: d27661016a2b23442b43392b7ad45bfb, type: 3}
+      propertyPath: m_Size.x
+      value: 11.645254
+      objectReference: {fileID: 0}
+    - target: {fileID: 313780279156686595, guid: d27661016a2b23442b43392b7ad45bfb, type: 3}
+      propertyPath: m_Size.y
+      value: 39.06868
+      objectReference: {fileID: 0}
+    - target: {fileID: 313780279156686595, guid: d27661016a2b23442b43392b7ad45bfb, type: 3}
+      propertyPath: m_Size.z
+      value: 7.758856
+      objectReference: {fileID: 0}
+    - target: {fileID: 313780279156686595, guid: d27661016a2b23442b43392b7ad45bfb, type: 3}
+      propertyPath: m_Center.x
+      value: -0.32262728
+      objectReference: {fileID: 0}
+    - target: {fileID: 313780279156686595, guid: d27661016a2b23442b43392b7ad45bfb, type: 3}
+      propertyPath: m_Center.y
+      value: 2.4197147
+      objectReference: {fileID: 0}
+    - target: {fileID: 313780279156686595, guid: d27661016a2b23442b43392b7ad45bfb, type: 3}
+      propertyPath: m_Center.z
+      value: 0.6452799
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482776374184049809, guid: d27661016a2b23442b43392b7ad45bfb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482776374184049809, guid: d27661016a2b23442b43392b7ad45bfb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482776374184049809, guid: d27661016a2b23442b43392b7ad45bfb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482776374184049809, guid: d27661016a2b23442b43392b7ad45bfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8630487658566446511, guid: d27661016a2b23442b43392b7ad45bfb, type: 3}
       propertyPath: m_RootOrder
       value: 16

@@ -33,12 +33,28 @@ public class TouchController : MonoBehaviour,IDragHandler,IPointerDownHandler,IP
         {
             GameManager.Instance.canSwing=true;
             GameManager.Instance.Player.GetComponent<PlayerMovement>().playerAnimator.SetBool("attack",true);
-            StartCoroutine(ActiveCollider());
+            GameManager.Instance.sword.GetComponent<BoxCollider>().enabled=true;
+            StartCoroutine(Rotate(0.5f));
+            //StartCoroutine(ActiveCollider());
             //Bunu deneyebilirsin. Daha iyi oldu gibi.
             //GameManager.Instance.sword.GetComponent<BoxCollider>().enabled=true;
             GameManager.Instance.SwordPlayParticle();
         }
 
+    }
+
+    IEnumerator Rotate(float duration)
+    {
+        float startRotation = GameManager.Instance.Player.transform.eulerAngles.y;
+        float endRotation = startRotation + 720.0f;
+        float t = 0.0f;
+        while ( t  < duration )
+        {
+            t += Time.deltaTime;
+            float yRotation = Mathf.Lerp(startRotation, endRotation, t / duration) % 720.0f;
+            GameManager.Instance.Player.transform.eulerAngles = new Vector3( GameManager.Instance.Player.transform.eulerAngles.x, yRotation,  GameManager.Instance.Player.transform.eulerAngles.z);
+            yield return null;
+        }
     }
 
     //Sword tam inerken bu efekti vermek icin kullaniyorum. Hanigis daha iyi sekilde duruyorsa ona karar ver. Belki gecikmeli olmasi iyi veya kotu etkiler.
@@ -47,4 +63,6 @@ public class TouchController : MonoBehaviour,IDragHandler,IPointerDownHandler,IP
         yield return new WaitForSeconds(.4f);
         GameManager.Instance.sword.GetComponent<BoxCollider>().enabled=true;
     }
+
+    
 }
