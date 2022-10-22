@@ -38,7 +38,10 @@ public class EnemyTrigger : MonoBehaviour
         Debug.Log("DEAD");
         smr.material.color=Color.grey;
         boxCollider.enabled=false;
-        UpdateManagers();
+
+        if(!gameManager.isAnExplotion)
+            UpdateManagers();
+
         GetComponent<Animator>().enabled=false;
         GetComponent<EnemyControl>().agent.isStopped=true;
         canMove=false;
@@ -46,6 +49,9 @@ public class EnemyTrigger : MonoBehaviour
         //PlayDeadZone();
         limbs[randomNumber].GetHit();
         isDead=true;
+
+        //!!!!!!!!!!!!! Patlayici ile olunce de buraya giriyor
+        //Bunu yorum yapinca yok olmuyorlar
         StartCoroutine(DeactiveRagdollCar());
 
         if(gameManager.ProgressValue==1f)
@@ -92,6 +98,7 @@ public class EnemyTrigger : MonoBehaviour
     {
         if(other.CompareTag("Sword"))
         {
+            gameManager.isAnExplotion=false;
             //&& GameManager.Instance.swinging
             if(!hit && GameManager.Instance.canDoDamage)
             {
@@ -111,6 +118,7 @@ public class EnemyTrigger : MonoBehaviour
             {
                 uiManager.UpdateHealthBar(0);
                 Debug.Log("PLAYER DEAD ");
+                gameManager.OpenFailLevel();
                 gameManager.isPlayerDead=true;
                 gameManager.isGameEnd=true;
                 gameManager.Player.GetComponent<Animator>().SetBool("playerDead",true);
@@ -136,9 +144,10 @@ public class EnemyTrigger : MonoBehaviour
 
     IEnumerator DeactiveRagdollCar()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         enemyRagdoll.DeactiveRagdoll();
-        gameObject.transform.DOScale(new Vector3(0.01f,0.01f,0.01f),2).OnComplete(()=>Destroy(gameObject));
+        //gameObject.transform.DOScale(new Vector3(0.01f,0.01f,0.01f),1).OnComplete(()=>Destroy(gameObject));
+        gameObject.transform.DOLocalMoveY(-1.5f,1f).OnComplete(()=>Destroy(gameObject));
         //Destroy(gameObject);
     }
 

@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public bool isPlayerDead=false;
     public bool isGameEnd=false;
     public bool canProgressContinue=true;
+    public bool isAnExplotion=false;
 
     [Header("Times and Values")]
     public float swingTime;
@@ -43,8 +44,9 @@ public class GameManager : MonoBehaviour
     [Header("Particles")]
     public ParticleSystem splashParticle;
     public ParticleSystem barfullParticle;
-    public List<ParticleSystem> gameEndParticles=new List<ParticleSystem>();
 
+    public List<ParticleSystem> gameEndParticles=new List<ParticleSystem>();
+    public List<GameObject> generatedObjects=new List<GameObject>();
 
 
 
@@ -55,6 +57,9 @@ public class GameManager : MonoBehaviour
     public Transform sword;
 
     public InteractUpgrade interactUpgrade;
+
+    [SerializeField]private LevelGenerator levelGenerator;
+
 
     private void Awake()
     {
@@ -108,6 +113,8 @@ public class GameManager : MonoBehaviour
 
         //UIManager.Instance.SetRadialProgressBar(radialSwingTime/incrementalSwingTime);
     }
+
+   
    
     public void UpdateEnemyCounter()
     {
@@ -127,6 +134,8 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.ProgressBar.DOFillAmount(0, .1f);
         Player.transform.position=PlayerInitPos;
         Player.transform.rotation=Quaternion.Euler(PlayerInitRot);
+        Player.GetComponent<PlayerTrigger>().currentHealth=Player.GetComponent<PlayerTrigger>().maxHealth;
+        UIManager.Instance.UpdateHealthBar((float)Player.GetComponent<PlayerTrigger>().currentHealth/(float)Player.GetComponent<PlayerTrigger>().maxHealth);
     }
 
     public void SwordPlayParticle()
@@ -154,6 +163,44 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
+    public void RestartButton()
+    {
+        failPanel.SetActive(false);
+        GameManager.Instance.Player.GetComponent<Animator>().SetFloat("speed",0);
+        GameManager.Instance.Player.GetComponent<Animator>().SetBool("playerDead",false);
+        GameManager.Instance.Player.GetComponent<Animator>().SetBool("success",false);
+        GameManager.Instance.isGameEnd=true;
+        GameManager.Instance.isPlayerDead=false;
+        DestroyGeneratedList();
+        ResetTheLevel();
+        StartCoroutine(CallGenerate());
+    }
+
+    public void DestroyGeneratedList()
+    {
+
+        for (int i = 0; i < generatedObjects.Count; i++)
+        {
+            Destroy(generatedObjects[i]);
+        }
+
+        generatedObjects.Clear();
+
+    }
+    private IEnumerator CallGenerate()
+    {
+        yield return new WaitForSeconds(0.5f);
+        levelGenerator=FindObjectOfType<LevelGenerator>();
+        levelGenerator.StartLevelGenerate();
+    }
+
+
+   
+
+    
+
+
 
     public void OpenFailLevel()
     {
@@ -210,7 +257,12 @@ public class GameManager : MonoBehaviour
 
     public void CloseIncrementalPanel()
     {
-        IncrementalPanel.transform.DOScale(Vector3.zero,0.25f).OnComplete(()=>IncrementalPanel.SetActive(false));
+        IncrementalPanel.transform.DOScale(Vector3.zero,0.25f).OnComplete(()=>
+        {
+            IncrementalPanel.SetActive(false);
+            tapToPlayButton.SetActive(true);
+            
+        });
     }
 
     public void OpenIncrementalPanel()
@@ -229,7 +281,7 @@ public class GameManager : MonoBehaviour
     {
         SwordArea=SwordArea+0.1f;
         Debug.Log("SWORD LOCAL SCALE :" + SwordArea);
-        sword.transform.localScale=new Vector3(1+SwordArea,1,1+SwordArea);
+        sword.transform.localScale=new Vector3(1.5f+SwordArea,1,1.5f+SwordArea);
         PlayerPrefs.SetFloat("areaHit",SwordArea);
         interactUpgrade.CheckButtonsInteraction();
         UIManager.Instance.UpdateArea();

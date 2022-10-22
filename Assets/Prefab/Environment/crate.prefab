@@ -109,3 +109,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scatteredObject: {fileID: 1236833289491162747, guid: 39eb06a387858704d9235d6f79ffeb71, type: 3}
+  coinObject: {fileID: 0}

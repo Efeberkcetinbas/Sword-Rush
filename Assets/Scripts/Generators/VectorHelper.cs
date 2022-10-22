@@ -19,7 +19,7 @@ public class VectorHelper : MonoBehaviour
              float.Parse(sArray[0],System.Globalization.CultureInfo.InvariantCulture),
              float.Parse(sArray[1],System.Globalization.CultureInfo.InvariantCulture),
              float.Parse(sArray[2],System.Globalization.CultureInfo.InvariantCulture));
- 
+
          return result;
      }
 }

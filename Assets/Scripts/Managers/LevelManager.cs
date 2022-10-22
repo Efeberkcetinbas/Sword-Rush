@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour
     {
         LoadLevel();
     }
-    void LoadLevel()
+    private void LoadLevel()
     {
         levelIndex = PlayerPrefs.GetInt("LevelNumber");
         if (levelIndex == levels.Count) levelIndex = 0;
@@ -44,6 +44,11 @@ public class LevelManager : MonoBehaviour
         UIManager.Instance.UpdateEarn();
         UIManager.Instance.UpdateArea();
 
+        Debug.Log(levels[levelIndex]);
+
+        GameManager.Instance.DestroyGeneratedList();
+        levels[levelIndex].GetComponent<LevelGenerator>().StartLevelGenerate();
+
         GameManager.Instance.ResetGameEnds();
 
         for (int i = 0; i < levels.Count; i++)
@@ -56,10 +61,11 @@ public class LevelManager : MonoBehaviour
         //GameManager.Instance.OpenIncrementalPanel();
         StartCoroutine(CallCheckButtons());
 
-        GameManager.Instance.tapToPlayButton.SetActive(true);
+        //GameManager.Instance.tapToPlayButton.SetActive(true);
         GameManager.Instance.isGameEnd=true;
         GameManager.Instance.isPlayerDead=false;
         GameManager.Instance.sword.transform.gameObject.SetActive(true);
+        GameManager.Instance.Player.GetComponent<Animator>().SetFloat("speed",0);
         GameManager.Instance.Player.GetComponent<Animator>().SetBool("playerDead",false);
         GameManager.Instance.Player.GetComponent<Animator>().SetBool("success",false);
 

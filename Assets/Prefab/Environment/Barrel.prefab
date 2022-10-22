@@ -33705,14 +33705,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de1516a2e543e446acbc8bf274f6974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 50
-  force: 50
-  sightRange: 50
-  isEnemyInRange: 0
-  Explode: 0
-  whatIsEnemy:
-    serializedVersion: 2
-    m_Bits: 256
   fireEffect: {fileID: 1624322744286370203}
   enemies: []
 --- !u!1 &8613864300590942313

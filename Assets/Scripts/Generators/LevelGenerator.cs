@@ -7,6 +7,7 @@ public class LevelGenerator : MonoBehaviour
 
     
 
+
     [SerializeField] private GameObject constantEnemyPrefab;
     [SerializeField] private GameObject moveEnemyPrefab;
     [SerializeField] private GameObject propPrefab;
@@ -32,15 +33,41 @@ public class LevelGenerator : MonoBehaviour
 
     /*[Header("GameOptions")]
     [SerializeField] Vector3 gameEndLocation;*/
+
+
+    
     void Start()
     {
 
+        /*if(!string.IsNullOrEmpty(propGenerateString)){
+            propGenerator.Init(propGenerateString,propPrefab);
+        }
+        
+        if(!string.IsNullOrEmpty(enemyGenerateString)){
+            enemyGenerator.Init(enemyGenerateString,constantEnemyPrefab);
+        }
+
+        //Baska scripte gerek kalmadan buradan halledebiliriz.
+        if(!string.IsNullOrEmpty(bombGenerateString)){
+            enemyGenerator.Init(bombGenerateString,bombPrefab);
+        }
+
+        if(!string.IsNullOrEmpty(crateGenerateString)){
+            propGenerator.Init(crateGenerateString,cratePrefab);
+        }
+
+        if(!string.IsNullOrEmpty(moveEnemyGenerateString)){
+            enemyGenerator.Init(moveEnemyGenerateString,moveEnemyPrefab);
+        }*/
+
+    }
+    //transform child dene!
+    public void StartLevelGenerate()
+    {
         if(!string.IsNullOrEmpty(propGenerateString)){
             propGenerator.Init(propGenerateString,propPrefab);
         }
-        /*if(!string.IsNullOrEmpty(wallGenerateString)){
-            wallGenerator.Init(wallGenerateString,inGameWallPrefab);
-        }*/
+        
         if(!string.IsNullOrEmpty(enemyGenerateString)){
             enemyGenerator.Init(enemyGenerateString,constantEnemyPrefab);
         }
@@ -58,6 +85,15 @@ public class LevelGenerator : MonoBehaviour
             enemyGenerator.Init(moveEnemyGenerateString,moveEnemyPrefab);
         }
 
-        //Instantiate(gameEndPrefab,gameEndLocation,Quaternion.identity,transform).transform.eulerAngles = new Vector3(0,-90,0);
+        foreach (Transform child in propGenerator.transform)
+        {
+            GameManager.Instance.generatedObjects.Add(child.gameObject);
+        }
+
+        foreach (Transform child in enemyGenerator.transform)
+        {
+            GameManager.Instance.generatedObjects.Add(child.gameObject);
+        }
     }
+
 }

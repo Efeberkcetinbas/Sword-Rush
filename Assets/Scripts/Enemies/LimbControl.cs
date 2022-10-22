@@ -29,7 +29,7 @@ public class LimbControl : MonoBehaviour
         if(limbPrefab!=null)
         {
             GameObject limbClone=(GameObject)Instantiate(limbPrefab, transform.position,transform.rotation);
-            Destroy(limbClone,3);
+            Destroy(limbClone,2);
             //Instantiate(limbPrefab, transform.position,transform.rotation);
         }
 

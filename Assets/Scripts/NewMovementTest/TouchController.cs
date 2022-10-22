@@ -33,9 +33,9 @@ public class TouchController : MonoBehaviour,IDragHandler,IPointerDownHandler,IP
         {
             GameManager.Instance.canSwing=true;
             GameManager.Instance.Player.GetComponent<PlayerMovement>().playerAnimator.SetBool("attack",true);
-            GameManager.Instance.sword.GetComponent<SphereCollider>().enabled=true;
+            //GameManager.Instance.sword.GetComponent<SphereCollider>().enabled=true;
             StartCoroutine(Rotate(0.5f));
-            //StartCoroutine(ActiveCollider());
+            StartCoroutine(ActiveCollider());
             //Bunu deneyebilirsin. Daha iyi oldu gibi.
             //GameManager.Instance.sword.GetComponent<BoxCollider>().enabled=true;
             GameManager.Instance.SwordPlayParticle();
@@ -60,7 +60,7 @@ public class TouchController : MonoBehaviour,IDragHandler,IPointerDownHandler,IP
     //Sword tam inerken bu efekti vermek icin kullaniyorum. Hanigis daha iyi sekilde duruyorsa ona karar ver. Belki gecikmeli olmasi iyi veya kotu etkiler.
     IEnumerator ActiveCollider()
     {
-        yield return new WaitForSeconds(.4f);
+        yield return new WaitForSeconds(.1f);
         GameManager.Instance.sword.GetComponent<SphereCollider>().enabled=true;
     }
 

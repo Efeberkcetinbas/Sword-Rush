@@ -11,6 +11,7 @@ public class ActivateBomb : MonoBehaviour
     {
         if(collider.CompareTag("Sword") && GameManager.Instance.canDoDamage)
         {
+            GameManager.Instance.isAnExplotion=true;
             CameraManager.Instance.ShakeIt();
             explotion.fireEffect.Play();
             SoundManager.Instance.Play("grenade");
