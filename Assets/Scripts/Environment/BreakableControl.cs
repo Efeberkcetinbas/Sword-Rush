@@ -5,7 +5,7 @@ using UnityEngine;
 public class BreakableControl : MonoBehaviour
 {
     [SerializeField] private GameObject scatteredObject;
-    [SerializeField] private GameObject coinObject;
+    //[SerializeField] private GameObject coinObject;
 
     private void OnTriggerEnter(Collider collider)
     {

@@ -21,7 +21,8 @@ public class TouchController : MonoBehaviour,IDragHandler,IPointerDownHandler,IP
         Rotation = delta.normalized;
         //Bunu deneyebilirsin. Daha iyi oldu gibi.
         GameManager.Instance.Player.GetComponent<PlayerMovement>().playerAnimator.SetBool("attack",false);
-        //GameManager.Instance.sword.GetComponent<SphereCollider>().enabled=false;
+        //Duruma gore acip kapayabilirsin.
+        GameManager.Instance.sword.GetComponent<SphereCollider>().enabled=false;
     }
 
     public void OnPointerUp(PointerEventData eventData)

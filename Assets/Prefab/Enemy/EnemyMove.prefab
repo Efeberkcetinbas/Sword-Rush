@@ -2051,6 +2051,8 @@ MonoBehaviour:
   walkPointRange: 0
   sightRange: 5
   playerInSightRange: 0
+  range1: 1.75
+  range2: 2
   enemyTrigger: {fileID: 7819418315391494604}
 --- !u!195 &7819418315391494608
 NavMeshAgent:

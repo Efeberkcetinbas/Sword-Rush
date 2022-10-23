@@ -265,7 +265,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1c30e388bb56c3e41af86bac6bfe0be5, type: 2}
+  - {fileID: 2100000, guid: db47496b1408c114aade5ed49df20962, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1917,7 +1917,7 @@ GameObject:
   - component: {fileID: 7819418315391494611}
   - component: {fileID: 7819418315391494608}
   m_Layer: 8
-  m_Name: EnemyConstant
+  m_Name: EnemyUpgraded
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2049,10 +2049,10 @@ MonoBehaviour:
     m_Bits: 128
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 0
-  sightRange: 7
+  sightRange: 5
   playerInSightRange: 0
-  range1: 0.75
-  range2: 1.25
+  range1: 1.75
+  range2: 2
   enemyTrigger: {fileID: 7819418315391494604}
 --- !u!195 &7819418315391494608
 NavMeshAgent:
@@ -2122,8 +2122,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.75637335, y: 2.6590574, z: 0.78374606}
-  m_Center: {x: -0.01638852, y: 0.13743098, z: -0.00621561}
+  m_Size: {x: 0.39457092, y: 0.6060368, z: 0.39457017}
+  m_Center: {x: -0.1972896, y: 0.22998604, z: -0.0024002492}
 --- !u!54 &8016493966267910810
 Rigidbody:
   m_ObjectHideFlags: 0

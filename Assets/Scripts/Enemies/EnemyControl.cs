@@ -23,14 +23,17 @@ public class EnemyControl : MonoBehaviour
 
     private float randomSpeed;
 
+    [SerializeField] private float range1,range2;
+
     private bool stop=true;
+
 
     [SerializeField] private EnemyTrigger enemyTrigger;
 
     void Awake()
     {
         agent=GetComponent<NavMeshAgent>();
-        randomSpeed=Random.Range(0.5f,2);
+        randomSpeed=Random.Range(range1,range2);
     }
 
     void Start()
@@ -115,12 +118,8 @@ public class EnemyControl : MonoBehaviour
             LookingAt();
             animator.SetBool("move", true);
         }
-
-
-        
-            
-        
     }
+
 
     private void LookingAt()
     {

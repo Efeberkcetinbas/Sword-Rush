@@ -24,6 +24,9 @@ public class EnemyTrigger : MonoBehaviour
     private GameManager gameManager;
     private UIManager uiManager;
     private CameraManager cameraManager;
+
+    //New Buraya dikkatttt
+    public Tween tween;
    void Start()
    {
         gameManager=GameManager.Instance;
@@ -91,6 +94,7 @@ public class EnemyTrigger : MonoBehaviour
 
             if(!hit && GameManager.Instance.canDoDamage)
             {
+                tween.Kill();
                 hit=true;
                 Dead();
             }

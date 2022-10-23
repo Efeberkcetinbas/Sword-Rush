@@ -31,8 +31,14 @@ public class EnemyRagdoll : MonoBehaviour
         //Animasyonu enabled yap.
         for(int i=0; i<ragdollRigidbody.Count; i++)
         {
+
             ragdollRigidbody[i].useGravity=false;
             ragdollRigidbody[i].isKinematic=true;
+
+            //new
+            
+            //ragdollRigidbody[i].GetComponent<Collider>().isTrigger=true;
+
         }
     }
 

@@ -8,12 +8,13 @@ public class LevelManager : MonoBehaviour
 
     [Header("Indexes")]
     public int levelIndex;
+    public int backgroundIndex;
     public List<GameObject> levels;
 
     public InteractUpgrade InteractUpgrade;
-
-    //[SerializeField] RectTransform fader;
-
+    
+    public List<MeshRenderer> ground=new List<MeshRenderer>();
+    public List<Material> groundMaterials=new List<Material>();
     private void Awake()
     {
         if (Instance == null)
@@ -36,7 +37,7 @@ public class LevelManager : MonoBehaviour
         if (levelIndex == levels.Count) levelIndex = 0;
         PlayerPrefs.SetInt("LevelNumber", levelIndex);
         //UIManager.Instance.UpgradeLevelText();
-
+        ChangeGroundMaterial();
         //Daha güzel bir şekilde yaz bunları çok daginik.
         UIManager.Instance.UpgradeLevelText();
         UIManager.Instance.UpgradeMoneyText();
@@ -87,5 +88,41 @@ public class LevelManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         InteractUpgrade.CheckButtonsInteraction();
+    }
+
+    private void ChangeGroundMaterial()
+    {
+        backgroundIndex=PlayerPrefs.GetInt("backgroundIndex",0);
+        int newBackground=PlayerPrefs.GetInt("RealLevel") + 1;
+
+        
+
+        if(newBackground % 3 == 0)
+        {
+            backgroundIndex++;
+
+            if(backgroundIndex==groundMaterials.Count)
+            {
+                backgroundIndex=0;
+                PlayerPrefs.SetInt("backgroundIndex",backgroundIndex);
+            }
+
+            else
+            {
+                PlayerPrefs.SetInt("backgroundIndex",backgroundIndex);
+            }
+            
+            StartCoroutine(ChangeColor());
+        }
+    }
+
+    private IEnumerator ChangeColor(){
+        
+        yield return new WaitForSeconds(1);
+
+        for (int i = 0; i < ground.Count; i++)
+        {
+            ground[i].material=groundMaterials[backgroundIndex];
+        }
     }
 }
