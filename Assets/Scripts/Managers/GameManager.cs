@@ -244,7 +244,7 @@ public class GameManager : MonoBehaviour
         SelectDamageTime=3;
         Debug.Log("VAL : " + val);
         //Buyuk ihtimal buradan dolayi dotween hatasi aliyorum. Buraya bak !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        sword.transform.DOScale(new Vector3(val*10,1,val*10),0.5f).OnComplete(()=>{
+        sword.transform.DOScale(new Vector3(val*7,1,val*7),0.5f).OnComplete(()=>{
             sword.transform.DOScale(new Vector3(val,1,val),0.5f).OnComplete(()=>{
                 SelectDamageTime=oldSelectedTime;
             });
