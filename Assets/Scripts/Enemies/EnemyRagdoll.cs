@@ -37,7 +37,7 @@ public class EnemyRagdoll : MonoBehaviour
 
             //new
             
-            //ragdollRigidbody[i].GetComponent<Collider>().isTrigger=true;
+            ragdollRigidbody[i].GetComponent<Collider>().isTrigger=true;
 
         }
     }

@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class LookToMain : MonoBehaviour
 {
-    [SerializeField] private Transform mLookAt;
+     
 
-    private Transform localTrans;
-    
-
-    void Start()
-    {
-        localTrans=GetComponent<Transform>();
-    }
 
     void Update()
     {
-        transform.LookAt(transform.position+mLookAt.transform.rotation*Vector3.back,
-        mLookAt.transform.rotation*Vector3.down);
+        LookAtControl();
     }
+
+    void LookAtControl()
+    {
+        transform.LookAt(new Vector3(Camera.main.transform.position.x ,0 , 0));
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+
+   
 
 }

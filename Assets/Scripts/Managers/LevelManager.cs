@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class LevelManager : MonoBehaviour
     
     public List<MeshRenderer> ground=new List<MeshRenderer>();
     public List<Material> groundMaterials=new List<Material>();
+
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -39,12 +43,12 @@ public class LevelManager : MonoBehaviour
         //UIManager.Instance.UpgradeLevelText();
         ChangeGroundMaterial();
         //Daha güzel bir şekilde yaz bunları çok daginik.
+
         UIManager.Instance.UpgradeLevelText();
         UIManager.Instance.UpgradeMoneyText();
         UIManager.Instance.UpdateSwingTime(GameManager.Instance.incrementalSwingTime);
         UIManager.Instance.UpdateEarn();
         UIManager.Instance.UpdateArea();
-
         Debug.Log(levels[levelIndex]);
 
         GameManager.Instance.DestroyGeneratedList();
@@ -117,7 +121,7 @@ public class LevelManager : MonoBehaviour
     }
 
     private IEnumerator ChangeColor(){
-        
+
         yield return new WaitForSeconds(1);
 
         for (int i = 0; i < ground.Count; i++)

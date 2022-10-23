@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     public bool canProgressContinue=true;
     public bool isAnExplotion=false;
 
+    private bool isTapOpen=false;
+
     [Header("Times and Values")]
     public float swingTime;
     public float incrementalSwingTime;
@@ -107,12 +109,21 @@ public class GameManager : MonoBehaviour
                 //UIManager.Instance.FullBar.color=new Color(0,1f,0.0071f,0.2392f);
                 //Hissiyat acisindan bu daha iyi oldu.
             }
-
-            
         }
+
+        if(Input.touchCount>0)
+        {
+            if(isTapOpen)
+            {
+                TapToPlay();
+                Debug.Log("FENERBAHCE : 1");
+            }
+
+        }        
 
         //UIManager.Instance.SetRadialProgressBar(radialSwingTime/incrementalSwingTime);
     }
+    
 
    
    
@@ -245,6 +256,7 @@ public class GameManager : MonoBehaviour
     {
         isGameEnd=false;
         tapToPlayButton.SetActive(false);
+        isTapOpen=false;
     }
 
     public void GetAllPlayerPrefs()
@@ -263,6 +275,7 @@ public class GameManager : MonoBehaviour
         {
             IncrementalPanel.SetActive(false);
             tapToPlayButton.SetActive(true);
+            isTapOpen=true;
             
         });
     }
