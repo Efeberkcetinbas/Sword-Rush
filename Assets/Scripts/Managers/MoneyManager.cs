@@ -22,7 +22,7 @@ public class MoneyManager : MonoBehaviour
 
     void Start()
     {
-        moneyAmount=PlayerPrefs.GetInt("money",1000);
+        moneyAmount=PlayerPrefs.GetInt("money");
         PlayerPrefs.SetInt("money",moneyAmount);
         UIManager.Instance.UpgradeMoneyText();
         //UIManager.Instance.UpgradeMoneyText();

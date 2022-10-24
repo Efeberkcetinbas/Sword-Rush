@@ -116,7 +116,7 @@ public class GameManager : MonoBehaviour
             if(isTapOpen)
             {
                 TapToPlay();
-                Debug.Log("FENERBAHCE : 1");
+                //Debug.Log("FENERBAHCE : 1");
             }
 
         }        
@@ -242,7 +242,7 @@ public class GameManager : MonoBehaviour
         var val=sword.transform.localScale.x;
         float oldSelectedTime=SelectDamageTime;
         SelectDamageTime=3;
-        Debug.Log("VAL : " + val);
+        //Debug.Log("VAL : " + val);
         //Buyuk ihtimal buradan dolayi dotween hatasi aliyorum. Buraya bak !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         sword.transform.DOScale(new Vector3(val*3,1,val*3),0.5f).OnComplete(()=>{
             sword.transform.DOScale(new Vector3(val,1,val),0.5f).OnComplete(()=>{
@@ -295,7 +295,7 @@ public class GameManager : MonoBehaviour
     public void UpdateHitArea()
     {
         SwordArea=SwordArea+0.1f;
-        Debug.Log("SWORD LOCAL SCALE :" + SwordArea);
+        //Debug.Log("SWORD LOCAL SCALE :" + SwordArea);
         sword.transform.localScale=new Vector3(1.5f+SwordArea,1,1.5f+SwordArea);
         PlayerPrefs.SetFloat("areaHit",SwordArea);
         interactUpgrade.CheckButtonsInteraction();

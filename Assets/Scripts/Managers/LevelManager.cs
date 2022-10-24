@@ -49,7 +49,7 @@ public class LevelManager : MonoBehaviour
         UIManager.Instance.UpdateSwingTime(GameManager.Instance.incrementalSwingTime);
         UIManager.Instance.UpdateEarn();
         UIManager.Instance.UpdateArea();
-        Debug.Log(levels[levelIndex]);
+        //Debug.Log(levels[levelIndex]);
 
         GameManager.Instance.DestroyGeneratedList();
         levels[levelIndex].GetComponent<LevelGenerator>().StartLevelGenerate();

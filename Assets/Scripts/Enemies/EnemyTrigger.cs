@@ -38,7 +38,7 @@ public class EnemyTrigger : MonoBehaviour
 
    public void Dead()
    {
-        Debug.Log("DEAD");
+        //Debug.Log("DEAD");
         smr.material.color=Color.grey;
         boxCollider.enabled=false;
 
@@ -124,7 +124,7 @@ public class EnemyTrigger : MonoBehaviour
             if( other.gameObject.GetComponent<PlayerTrigger>().currentHealth<=0)
             {
                 uiManager.UpdateHealthBar(0);
-                Debug.Log("PLAYER DEAD ");
+                //Debug.Log("PLAYER DEAD ");
                 gameManager.OpenFailLevel();
                 gameManager.isPlayerDead=true;
                 gameManager.isGameEnd=true;

@@ -50,7 +50,7 @@ public class InteractUpgrade : MonoBehaviour
             //PlayerPrefs.GetFloat("timeDecrease");
             NewMoneyAmount(timeDecreasePrice);
             ButtonActive(timeDecreaseButton,true);
-            timeDecreasePrice=Mathf.RoundToInt(timeDecreasePrice*1.3f);
+            timeDecreasePrice=Mathf.RoundToInt(timeDecreasePrice*2f);
             PlayerPrefs.SetFloat("timeDecrease",timeDecreasePrice);
             UpdateText(timeText,timeDecreasePrice);
             MakeTween(timeDecreaseButton.gameObject);
@@ -71,7 +71,7 @@ public class InteractUpgrade : MonoBehaviour
             //PlayerPrefs.GetFloat("area");
             NewMoneyAmount(areaPrice);
             ButtonActive(areaButton,true);
-            areaPrice=Mathf.RoundToInt(areaPrice*1.5f);
+            areaPrice=Mathf.RoundToInt(areaPrice*2f);
             PlayerPrefs.SetFloat("area",areaPrice);
             UpdateText(areaText,areaPrice);
             MakeTween(areaButton.gameObject);
@@ -92,7 +92,7 @@ public class InteractUpgrade : MonoBehaviour
             //PlayerPrefs.GetFloat("earn");
             NewMoneyAmount(earnPrice);
             ButtonActive(earnButton,true);
-            earnPrice=Mathf.RoundToInt(earnPrice*1.2f);
+            earnPrice=Mathf.RoundToInt(earnPrice*1.75f);
             PlayerPrefs.SetFloat("earn",earnPrice);
             UpdateText(earnText,earnPrice);
             MakeTween(earnButton.gameObject);

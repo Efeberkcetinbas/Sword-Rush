@@ -37,7 +37,7 @@ public class SoundManager : MonoBehaviour
 
         if (s == null)
         {
-            Debug.LogWarning("Sound" + name + "not found");
+            //Debug.LogWarning("Sound" + name + "not found");
             return;
         }
 

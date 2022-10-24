@@ -12,7 +12,7 @@ public class AutoDoorTrigger : MonoBehaviour
         {
             GameEvents.Instance.AutoDoorTriggerEnter(id);
             GameManager.Instance.isPlayerHide=!GameManager.Instance.isPlayerHide;
-            Debug.Log("dasdasdasdasd");
+            //Debug.Log("dasdasdasdasd");
         }
     }
 

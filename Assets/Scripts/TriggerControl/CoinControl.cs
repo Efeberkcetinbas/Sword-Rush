@@ -10,7 +10,7 @@ public class CoinControl : Obstacable
     internal override void DoAction(PlayerTrigger player)
     {
         MoneyManager.Instance.UpdateMoney();
-        Debug.Log(PlayerPrefs.GetInt("money"));
+        //Debug.Log(PlayerPrefs.GetInt("money"));
         PlayParticle();
         coin.SetActive(false);
     }

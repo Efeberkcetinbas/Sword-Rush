@@ -13,7 +13,7 @@ public class LimbControl : MonoBehaviour
 
     public void GetHit()
     {
-        Debug.Log("KAC KEZ CALISTI");
+        //Debug.Log("KAC KEZ CALISTI");
         if(childLimbs.Length>0)
         {
             foreach(LimbControl limb in childLimbs)
