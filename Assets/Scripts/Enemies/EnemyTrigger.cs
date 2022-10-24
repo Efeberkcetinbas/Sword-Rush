@@ -119,7 +119,7 @@ public class EnemyTrigger : MonoBehaviour
             
             other.gameObject.GetComponent<PlayerTrigger>().HealthChange(1);
             uiManager.UpdateHealthBar((float)other.gameObject.GetComponent<PlayerTrigger>().currentHealth/(float)other.gameObject.GetComponent<PlayerTrigger>().maxHealth);
-            uiManager.ColorChanger(uiManager.playerHealthImage,Color.green,Color.red,0.25f);
+            //uiManager.ColorChanger(uiManager.playerHealthImage,Color.green,Color.red,0.25f);
 
             if( other.gameObject.GetComponent<PlayerTrigger>().currentHealth<=0)
             {

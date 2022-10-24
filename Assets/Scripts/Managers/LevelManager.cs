@@ -96,7 +96,7 @@ public class LevelManager : MonoBehaviour
 
     private void ChangeGroundMaterial()
     {
-        backgroundIndex=PlayerPrefs.GetInt("backgroundIndex",0);
+        backgroundIndex=PlayerPrefs.GetInt("backgroundIndex");
         int newBackground=PlayerPrefs.GetInt("RealLevel") + 1;
 
         
