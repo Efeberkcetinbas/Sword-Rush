@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1216686922721282306}
   - component: {fileID: 1216686922701965782}
   - component: {fileID: 1216686922703635080}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Clouds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4795,7 +4795,7 @@ GameObject:
   - component: {fileID: 1216686922721369790}
   - component: {fileID: 1216686922701961614}
   - component: {fileID: 1216686922703644240}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GoldCoinDirectional
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9492,7 +9492,7 @@ GameObject:
   - component: {fileID: 1216686922721359476}
   - component: {fileID: 1216686922701887696}
   - component: {fileID: 1216686922703671450}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14294,7 +14294,7 @@ GameObject:
   - component: {fileID: 1216686922721375304}
   - component: {fileID: 1216686922701895436}
   - component: {fileID: 1216686922703662826}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sparkle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19123,7 +19123,7 @@ GameObject:
   - component: {fileID: 5611926374186138036}
   - component: {fileID: 840835406410435466}
   - component: {fileID: 1961124786199576549}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bitcoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19204,7 +19204,7 @@ GameObject:
   - component: {fileID: 3801071994548960026}
   - component: {fileID: 3801071994548960029}
   - component: {fileID: 3801071994548960028}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}

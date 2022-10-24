@@ -2049,10 +2049,10 @@ MonoBehaviour:
     m_Bits: 128
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 0
-  sightRange: 5
+  sightRange: 10
   playerInSightRange: 0
-  range1: 1.75
-  range2: 2
+  range1: 2
+  range2: 2.3
   enemyTrigger: {fileID: 7819418315391494604}
 --- !u!195 &7819418315391494608
 NavMeshAgent:
