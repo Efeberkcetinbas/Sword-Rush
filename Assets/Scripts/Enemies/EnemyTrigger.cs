@@ -57,7 +57,7 @@ public class EnemyTrigger : MonoBehaviour
         //Bunu yorum yapinca yok olmuyorlar
         StartCoroutine(DeactiveRagdollCar());
 
-        if(gameManager.ProgressValue==1f)
+        if(gameManager.ProgressValue>1f)
         {
             gameManager.BarFullPlayParticle();
             gameManager.IncreaseSwordAreaCollider();
@@ -139,7 +139,8 @@ public class EnemyTrigger : MonoBehaviour
         if(gameManager.canProgressContinue)
         {
             gameManager.ProgressValue+=1/(float)gameManager.EnemyCounter;
-            uiManager.SetProgressbar(gameManager.ProgressValue);
+            float progressVal=gameManager.ProgressValue;
+            uiManager.SetProgressbar(progressVal);
             uiManager.ColorChanger(uiManager.ProgressBar,Color.yellow,Color.red,0.1f);
         }
         

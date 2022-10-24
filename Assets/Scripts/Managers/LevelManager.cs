@@ -37,7 +37,7 @@ public class LevelManager : MonoBehaviour
     }
     private void LoadLevel()
     {
-        levelIndex = PlayerPrefs.GetInt("LevelNumber");
+        levelIndex = PlayerPrefs.GetInt("LevelNumber",8);
         if (levelIndex == levels.Count) levelIndex = 0;
         PlayerPrefs.SetInt("LevelNumber", levelIndex);
         //UIManager.Instance.UpgradeLevelText();
