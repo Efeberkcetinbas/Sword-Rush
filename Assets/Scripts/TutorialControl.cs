@@ -21,6 +21,7 @@ public class TutorialControl : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             text2.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }

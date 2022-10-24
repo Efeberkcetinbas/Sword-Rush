@@ -19,11 +19,11 @@ public class BreakableControl : MonoBehaviour
     {
         if(collider.CompareTag("Sword") && GameManager.Instance.canDoDamage)
         {
-            Debug.Log(randomNumber);
-            Create(scatteredObject,3);
+            //Debug.Log(randomNumber);
+            Create(scatteredObject,3,transform.position);
 
-            if(randomNumber%2==0)
-                Create(coinObject,5);
+            if(randomNumber<7)
+                Create(coinObject,5,new Vector3(transform.position.x,transform.position.y+0.3f,transform.position.z));
 
             Destroy(gameObject);
 
@@ -32,11 +32,12 @@ public class BreakableControl : MonoBehaviour
     }
 
 
-    private void Create(GameObject newgameObject,float time)
+    private void Create(GameObject newgameObject,float time, Vector3 pos)
     {
-        GameObject clone=(GameObject)Instantiate(newgameObject,transform.position,Quaternion.identity);
+        GameObject clone=(GameObject)Instantiate(newgameObject,pos,Quaternion.identity);
         Destroy(clone,time);
     }
+
 
     
 }

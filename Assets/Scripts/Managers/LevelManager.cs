@@ -10,6 +10,8 @@ public class LevelManager : MonoBehaviour
     [Header("Indexes")]
     public int levelIndex;
     public int backgroundIndex;
+    public int newBackground;
+
     public List<GameObject> levels;
 
     public InteractUpgrade InteractUpgrade;
@@ -41,7 +43,7 @@ public class LevelManager : MonoBehaviour
         if (levelIndex == levels.Count) levelIndex = 1;
         PlayerPrefs.SetInt("LevelNumber", levelIndex);
         //UIManager.Instance.UpgradeLevelText();
-        ChangeGroundMaterial();
+        //ChangeGroundMaterial();
         //Daha güzel bir şekilde yaz bunları çok daginik.
 
         UIManager.Instance.UpgradeLevelText();
@@ -86,6 +88,7 @@ public class LevelManager : MonoBehaviour
         //Startda calismasini istiyorsan loadLevel methodu icine yazacaksin. Diger turlu burada duracak.
         UIManager.Instance.StartFader();
         //GameManager.Instance.GetAllPlayerPrefs();
+        ChangeGroundMaterial();
     }
 
     IEnumerator CallCheckButtons()
@@ -96,14 +99,16 @@ public class LevelManager : MonoBehaviour
 
     private void ChangeGroundMaterial()
     {
+        //Bunları Starta alip deneyebilirsin
         backgroundIndex=PlayerPrefs.GetInt("backgroundIndex");
-        int newBackground=PlayerPrefs.GetInt("RealLevel") + 1;
+        newBackground=PlayerPrefs.GetInt("RealLevel") + 1;
 
-        
 
-        if(newBackground % 8 == 0)
+        if(newBackground % 9 == 0)
         {
             backgroundIndex++;
+            PlayerPrefs.SetInt("backgroundIndex",backgroundIndex);
+
 
             if(backgroundIndex==groundMaterials.Count)
             {
@@ -111,11 +116,6 @@ public class LevelManager : MonoBehaviour
                 PlayerPrefs.SetInt("backgroundIndex",backgroundIndex);
             }
 
-            else
-            {
-                PlayerPrefs.SetInt("backgroundIndex",backgroundIndex);
-            }
-            
             StartCoroutine(ChangeColor());
         }
     }
