@@ -41,6 +41,7 @@ public class TouchController : MonoBehaviour,IDragHandler,IPointerDownHandler,IP
             //Bunu deneyebilirsin. Daha iyi oldu gibi.
             //GameManager.Instance.sword.GetComponent<BoxCollider>().enabled=true;
             GameManager.Instance.SwordPlayParticle();
+            CameraManager.Instance.ShakeIt();
         }
 
     }

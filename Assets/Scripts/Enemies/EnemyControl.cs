@@ -28,6 +28,7 @@ public class EnemyControl : MonoBehaviour
     private bool stop=true;
 
 
+
     [SerializeField] private EnemyTrigger enemyTrigger;
 
     void Awake()
@@ -40,6 +41,8 @@ public class EnemyControl : MonoBehaviour
     {
         animator=GetComponent<Animator>();
         agent.speed=randomSpeed;
+
+        
     }
 
     void Update()

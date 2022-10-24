@@ -144,7 +144,7 @@ public class EnemyTrigger : MonoBehaviour
             uiManager.ColorChanger(uiManager.ProgressBar,Color.yellow,Color.red,0.1f);
         }
         
-        cameraManager.ShakeIt();
+        //cameraManager.ShakeIt();
 
     }
 

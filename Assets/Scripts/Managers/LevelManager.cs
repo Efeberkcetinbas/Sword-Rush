@@ -37,8 +37,8 @@ public class LevelManager : MonoBehaviour
     }
     private void LoadLevel()
     {
-        levelIndex = PlayerPrefs.GetInt("LevelNumber",8);
-        if (levelIndex == levels.Count) levelIndex = 0;
+        levelIndex = PlayerPrefs.GetInt("LevelNumber");
+        if (levelIndex == levels.Count) levelIndex = 1;
         PlayerPrefs.SetInt("LevelNumber", levelIndex);
         //UIManager.Instance.UpgradeLevelText();
         ChangeGroundMaterial();
@@ -101,7 +101,7 @@ public class LevelManager : MonoBehaviour
 
         
 
-        if(newBackground % 3 == 0)
+        if(newBackground % 8 == 0)
         {
             backgroundIndex++;
 
