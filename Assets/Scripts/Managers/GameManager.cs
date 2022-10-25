@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameEndCanvas;
     public GameObject finishLineObject;
     public GameObject tapToPlayButton;
+    public GameObject pointerArrow;
 
 
     [Header("Bools")]
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
     public float damageTime;
 
     public int EnemyCounter;
+    public int SumOfEnemies;
     public int EarningMoney;
     public float increaseValue;
     public float ProgressValue;
@@ -129,7 +131,8 @@ public class GameManager : MonoBehaviour
    
     public void UpdateEnemyCounter()
     {
-        EnemyCounter=FindObjectOfType<CountOfEnemy>().counter;
+        EnemyCounter=FindObjectOfType<CountOfEnemy>().ultiCounter;
+        SumOfEnemies=FindObjectOfType<CountOfEnemy>().whatIsEnemyCount;
         increaseValue=1/(float)EnemyCounter;
     }
 
@@ -209,7 +212,10 @@ public class GameManager : MonoBehaviour
     }
 
 
-   
+    public void ActivatePointerArrow()
+    {
+        pointerArrow.SetActive(true);
+    }
 
     
 
@@ -261,7 +267,8 @@ public class GameManager : MonoBehaviour
 
     public void GetAllPlayerPrefs()
     {
-        incrementalSwingTime=PlayerPrefs.GetFloat("incrementals",2);
+        //0.4'e kadar oluyor
+        incrementalSwingTime=PlayerPrefs.GetFloat("incrementals",1f);
         radialSwingTime=incrementalSwingTime;
         EarningMoney=PlayerPrefs.GetInt("earningMoney",10);
         SwordArea=PlayerPrefs.GetFloat("areaHit",0.1f);
@@ -304,12 +311,15 @@ public class GameManager : MonoBehaviour
 
     public void UpdateFillingStorage(float Amount)
     {
-        incrementalSwingTime-=Amount;
-        radialSwingTime=incrementalSwingTime;
-        PlayerPrefs.SetFloat("incrementals",incrementalSwingTime);
-        UIManager.Instance.UpdateSwingTime(incrementalSwingTime);
-        //Playerprefs cekemedim
-        interactUpgrade.CheckButtonsInteraction();
+        if(incrementalSwingTime>=0.4f)
+        {
+            incrementalSwingTime-=Amount;
+            radialSwingTime=incrementalSwingTime;
+            PlayerPrefs.SetFloat("incrementals",incrementalSwingTime);
+            UIManager.Instance.UpdateSwingTime(incrementalSwingTime);
+            interactUpgrade.CheckButtonsInteraction();
+        }
+        
     }
 
 

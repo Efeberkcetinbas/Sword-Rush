@@ -4,5 +4,7 @@ using UnityEngine;
 
 public class CountOfEnemy : MonoBehaviour
 {
-    public int counter;
+    public int ultiCounter;
+
+    public int whatIsEnemyCount;
 }

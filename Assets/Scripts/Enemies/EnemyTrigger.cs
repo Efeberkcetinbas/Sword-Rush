@@ -5,18 +5,20 @@ using DG.Tweening;
 
 public class EnemyTrigger : MonoBehaviour
 {
-   public bool hit=false;
-   public bool canMove=true;
-   public bool isDead=false;
+    public bool hit=false;
+    public bool canMove=true;
+    public bool isDead=false;
 
    //[SerializeField] private ParticleSystem deadZone;
 
-   [SerializeField] private SkinnedMeshRenderer smr;
+    [SerializeField] private SkinnedMeshRenderer smr;
 
-   private BoxCollider boxCollider;
+    private BoxCollider boxCollider;
 
 
-   public int randomNumber;
+
+
+    public int randomNumber;
 
     [SerializeField] private EnemyRagdoll enemyRagdoll;
     [SerializeField] private List<LimbControl> limbs=new List<LimbControl>();
@@ -34,6 +36,7 @@ public class EnemyTrigger : MonoBehaviour
         cameraManager=CameraManager.Instance;
         randomNumber=Random.Range(0,9);
         boxCollider=GetComponent<BoxCollider>();
+
    }
 
    public void Dead()
@@ -52,7 +55,12 @@ public class EnemyTrigger : MonoBehaviour
         //PlayDeadZone();
         limbs[randomNumber].GetHit();
         isDead=true;
+        gameManager.SumOfEnemies--;
 
+        if(gameManager.SumOfEnemies<=0)
+        {
+            gameManager.ActivatePointerArrow();
+        }
         //!!!!!!!!!!!!! Patlayici ile olunce de buraya giriyor
         //Bunu yorum yapinca yok olmuyorlar
         StartCoroutine(DeactiveRagdollCar());

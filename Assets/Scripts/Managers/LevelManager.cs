@@ -75,6 +75,7 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.Player.GetComponent<Animator>().SetFloat("speed",0);
         GameManager.Instance.Player.GetComponent<Animator>().SetBool("playerDead",false);
         GameManager.Instance.Player.GetComponent<Animator>().SetBool("success",false);
+        GameManager.Instance.pointerArrow.SetActive(false);
 
         newBackground=PlayerPrefs.GetInt("RealLevel") + 1;
         backgroundIndex=PlayerPrefs.GetInt("backgroundIndex");

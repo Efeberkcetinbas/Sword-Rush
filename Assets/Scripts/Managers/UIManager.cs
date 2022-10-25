@@ -36,6 +36,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI earnText;
     public TextMeshProUGUI swordAreaText;
 
+    public Transform target;
+
     void Awake()
     {
         if (Instance == null)

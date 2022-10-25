@@ -2016,6 +2016,7 @@ MonoBehaviour:
   canMove: 1
   isDead: 0
   smr: {fileID: 6058807270714155871}
+  effectCoin: {fileID: 3801071994548960024, guid: bdf99bc962f1b14449f924a51eead623, type: 3}
   randomNumber: 0
   enemyRagdoll: {fileID: 7819418315391494607}
   limbs:
