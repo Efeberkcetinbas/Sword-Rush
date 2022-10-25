@@ -76,6 +76,9 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.Player.GetComponent<Animator>().SetBool("playerDead",false);
         GameManager.Instance.Player.GetComponent<Animator>().SetBool("success",false);
 
+        newBackground=PlayerPrefs.GetInt("RealLevel") + 1;
+        backgroundIndex=PlayerPrefs.GetInt("backgroundIndex");
+        StartCoroutine(ChangeColor(0));
         //DotweenManager.Instance.FadeTween(fader, 0, 0, 0, .25f);
     }
 
@@ -100,8 +103,7 @@ public class LevelManager : MonoBehaviour
     private void ChangeGroundMaterial()
     {
         //Bunları Starta alip deneyebilirsin
-        backgroundIndex=PlayerPrefs.GetInt("backgroundIndex");
-        newBackground=PlayerPrefs.GetInt("RealLevel") + 1;
+        //backgroundIndex=PlayerPrefs.GetInt("backgroundIndex");
 
 
         if(newBackground % 9 == 0)
@@ -116,13 +118,13 @@ public class LevelManager : MonoBehaviour
                 PlayerPrefs.SetInt("backgroundIndex",backgroundIndex);
             }
 
-            StartCoroutine(ChangeColor());
+            StartCoroutine(ChangeColor(1));
         }
     }
 
-    private IEnumerator ChangeColor(){
+    private IEnumerator ChangeColor(float time){
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(time);
 
         for (int i = 0; i < ground.Count; i++)
         {
