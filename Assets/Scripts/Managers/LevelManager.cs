@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using Facebook.Unity;
+//using ElephantSDK;
 
 public class LevelManager : MonoBehaviour
 {
@@ -51,6 +53,9 @@ public class LevelManager : MonoBehaviour
         UIManager.Instance.UpdateEarn();
         UIManager.Instance.UpdateArea();
         //Debug.Log(levels[levelIndex]);
+        
+        Elephant.LevelStarted((PlayerPrefs.GetInt("RealLevel", 0) + 1));
+        
 
         GameManager.Instance.DestroyGeneratedList();
         levels[levelIndex].GetComponent<LevelGenerator>().StartLevelGenerate();
@@ -85,12 +90,16 @@ public class LevelManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        Elephant.LevelCompleted(PlayerPrefs.GetInt("RealLevel", 0) + 1);
+        LogAchieveLevelEvent((PlayerPrefs.GetInt("RealLevel", 0) + 1).ToString());
         PlayerPrefs.SetInt("LevelNumber", levelIndex + 1);
         PlayerPrefs.SetInt("RealLevel", PlayerPrefs.GetInt("RealLevel", 0) + 1);
         LoadLevel();
         GameManager.Instance.ResetTheLevel();
         //Startda calismasini istiyorsan loadLevel methodu icine yazacaksin. Diger turlu burada duracak.
         UIManager.Instance.StartFader();
+
+
         //GameManager.Instance.GetAllPlayerPrefs();
         ChangeGroundMaterial();
     }
@@ -123,7 +132,8 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private IEnumerator ChangeColor(float time){
+    private IEnumerator ChangeColor(float time)
+    {
 
         yield return new WaitForSeconds(time);
 
@@ -131,5 +141,65 @@ public class LevelManager : MonoBehaviour
         {
             ground[i].material=groundMaterials[backgroundIndex];
         }
+    }
+
+    void OnApplicationPause(bool pauseStatus)
+    {
+        
+         
+        // Check the pauseStatus to see if we are in the foreground
+        // or background
+        if (!pauseStatus)
+        {
+            //app resume
+            if (FB.IsInitialized)
+            {
+                FB.ActivateApp();
+            }
+            else
+            {
+                //Handle FB.Init
+                FB.Init(() =>
+                {
+                    FB.ActivateApp();
+                });
+            }
+        }
+        
+    }
+​
+    public void LogAchieveLevelEvent(string level)
+    {
+        
+        var parameters = new Dictionary<string, object>();
+        parameters[AppEventParameterName.Level] = level;
+        FB.LogAppEvent(
+            AppEventName.AchievedLevel, null,
+            parameters
+        ); 
+    }
+​
+    public void LogLevelFailEvent(int level)
+    {
+        
+        var parameters = new Dictionary<string, object>();
+        parameters["Level"] = level;
+        FB.LogAppEvent(
+            "LevelFail", null,
+            parameters
+        );
+        
+    }
+​
+    public void LogRestartEvent(int level)
+    {
+        
+        var parameters = new Dictionary<string, object>();
+        parameters["Level"] = level;
+        FB.LogAppEvent(
+            "Restart", null,
+            parameters
+        );
+        
     }
 }

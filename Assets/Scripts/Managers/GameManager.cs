@@ -248,6 +248,8 @@ public class GameManager : MonoBehaviour
         gameEndCanvas.SetActive(true);
         successPanel.SetActive(false);
         failPanel.SetActive(true);
+        Elephant.LevelFailed(PlayerPrefs.GetInt("RealLevel") + 1);
+        LevelManager.Instance.LogLevelFailEvent(PlayerPrefs.GetInt("RealLevel") + 1);
     }
 
     public void ResetGameEnds()
