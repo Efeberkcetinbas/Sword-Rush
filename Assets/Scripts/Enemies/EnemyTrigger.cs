@@ -41,6 +41,7 @@ public class EnemyTrigger : MonoBehaviour
 
    }
 
+
    public void Dead()
    {
         //CreateEffect();
@@ -49,6 +50,8 @@ public class EnemyTrigger : MonoBehaviour
         boxCollider.enabled=false;
         //GoEffectGo();
         //uiManager.CreateCoinEffect();
+
+        transform.GetComponent<EffectToBar>().StartCoinMove(transform.position);
         if(!gameManager.isAnExplotion)
             UpdateManagers();
 
@@ -78,6 +81,8 @@ public class EnemyTrigger : MonoBehaviour
         }
 
    }
+
+  
 
    private IEnumerator ResetProgressValue()
    {
@@ -111,8 +116,7 @@ public class EnemyTrigger : MonoBehaviour
     }
     private void CreateEffect()
     {
-        GameObject clone=(GameObject)Instantiate(coinEffect,GameManager.Instance.Player.transform.localPosition,Quaternion.identity);
-        clone.transform.DOLocalMoveX(-1.32f,1f);
+        Instantiate(coinEffect,Camera.main.WorldToScreenPoint(transform.position),uiManager.target.rotation,uiManager.target);
     }
     
     
@@ -164,7 +168,7 @@ public class EnemyTrigger : MonoBehaviour
         }
     }
 
-    private void UpdateManagers()
+    public void UpdateManagers()
     {
         if(gameManager.canProgressContinue)
         {
