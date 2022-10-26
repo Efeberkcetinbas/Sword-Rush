@@ -71,6 +71,7 @@ public class LevelManager : MonoBehaviour
         //GameManager.Instance.tapToPlayButton.SetActive(true);
         GameManager.Instance.isGameEnd=true;
         GameManager.Instance.isPlayerDead=false;
+        GameManager.Instance.UpgradeBarUltimate.SetActive(false);
         GameManager.Instance.sword.transform.gameObject.SetActive(true);
         GameManager.Instance.Player.GetComponent<Animator>().SetFloat("speed",0);
         GameManager.Instance.Player.GetComponent<Animator>().SetBool("playerDead",false);

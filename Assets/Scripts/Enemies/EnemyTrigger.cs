@@ -51,7 +51,7 @@ public class EnemyTrigger : MonoBehaviour
         //GoEffectGo();
         //uiManager.CreateCoinEffect();
 
-        transform.GetComponent<EffectToBar>().StartCoinMove(transform.position);
+        transform.GetComponent<EffectToBar>().StartCoinMove(transform.position,transform.gameObject);
         if(!gameManager.isAnExplotion)
             UpdateManagers();
 

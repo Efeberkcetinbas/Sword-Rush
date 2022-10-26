@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public GameObject finishLineObject;
     public GameObject tapToPlayButton;
     public GameObject pointerArrow;
+    public GameObject UpgradeBarUltimate;
+
 
 
     [Header("Bools")]
@@ -292,6 +294,8 @@ public class GameManager : MonoBehaviour
             IncrementalPanel.SetActive(false);
             tapToPlayButton.SetActive(true);
             isTapOpen=true;
+            UpgradeBarUltimate.SetActive(true);
+            
             
         });
     }

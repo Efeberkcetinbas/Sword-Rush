@@ -1916,6 +1916,7 @@ GameObject:
   - component: {fileID: 7819418315391494604}
   - component: {fileID: 7819418315391494611}
   - component: {fileID: 7819418315391494608}
+  - component: {fileID: 4848579375465790056}
   m_Layer: 8
   m_Name: EnemyMove
   m_TagString: Enemy
@@ -2077,6 +2078,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &4848579375465790056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7819418315391494606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e472c5006e1872142800c64aaaa39436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  coinPrefab: {fileID: 3801071994548960024, guid: bdf99bc962f1b14449f924a51eead623, type: 3}
 --- !u!1 &8016493966267910805
 GameObject:
   m_ObjectHideFlags: 0
