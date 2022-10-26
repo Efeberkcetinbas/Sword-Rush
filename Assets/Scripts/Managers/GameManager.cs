@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour
 
     public int EnemyCounter;
     public int SumOfEnemies;
+    public int constantSumEnemy;
     public int EarningMoney;
     public float increaseValue;
     public float ProgressValue;
@@ -144,6 +146,7 @@ public class GameManager : MonoBehaviour
         }
         
         SumOfEnemies=FindObjectOfType<CountOfEnemy>().whatIsEnemyCount;
+        constantSumEnemy=SumOfEnemies;
         increaseValue=1/(float)EnemyCounter;
     }
 
@@ -197,6 +200,7 @@ public class GameManager : MonoBehaviour
         GameManager.Instance.Player.GetComponent<Animator>().SetBool("success",false);
         GameManager.Instance.isGameEnd=true;
         GameManager.Instance.isPlayerDead=false;
+        SumOfEnemies=constantSumEnemy;
         DestroyGeneratedList();
         ResetTheLevel();
         StartCoroutine(CallGenerate());
@@ -234,6 +238,13 @@ public class GameManager : MonoBehaviour
 
     public void OpenFailLevel()
     {
+        StartCoroutine(openFail());
+    }
+
+
+    private IEnumerator openFail()
+    {
+        yield return new WaitForSeconds(1.25f);
         gameEndCanvas.SetActive(true);
         successPanel.SetActive(false);
         failPanel.SetActive(true);

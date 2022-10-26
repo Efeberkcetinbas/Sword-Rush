@@ -9,6 +9,8 @@ public class EnemyTrigger : MonoBehaviour
     public bool canMove=true;
     public bool isDead=false;
 
+    public bool cutBySword=false;
+
    //[SerializeField] private ParticleSystem deadZone;
 
     [SerializeField] private SkinnedMeshRenderer smr;
@@ -42,6 +44,7 @@ public class EnemyTrigger : MonoBehaviour
    }
 
 
+
    public void Dead()
    {
         //Debug.Log("DEAD");
@@ -73,6 +76,7 @@ public class EnemyTrigger : MonoBehaviour
         {
             gameManager.BarFullPlayParticle();
             gameManager.IncreaseSwordAreaCollider();
+            UIManager.Instance.ProgressBar.color=new Color(1, 0.4734f, 0);
             ResetProgressVal();
             //StartCoroutine(ResetProgressValue());
         }
@@ -81,21 +85,20 @@ public class EnemyTrigger : MonoBehaviour
 
   
 
-   private IEnumerator ResetProgressValue()
-   {
-        yield return new WaitForSeconds(2);
-        gameManager.ProgressValue=0;
-        UIManager.Instance.ProgressBar.DOFillAmount(0, .3f);
-   }
+  
+
+   
 
     //Yukaridaki method ya da bu
    private void ResetProgressVal()
    {
         gameManager.canProgressContinue=false;
         gameManager.ProgressValue=0;
-        UIManager.Instance.ProgressBar.DOFillAmount(0,.5f).OnComplete(()=>
+        UIManager.Instance.ProgressBar.fillAmount=1;
+        UIManager.Instance.ProgressBar.DOFillAmount(0,0.75f).OnComplete(()=>
         {
             gameManager.canProgressContinue=true;
+            UIManager.Instance.ProgressBar.color=Color.yellow;
         });
    }
     // Stayi dene bir de
@@ -111,7 +114,8 @@ public class EnemyTrigger : MonoBehaviour
 
             if(!hit && GameManager.Instance.canDoDamage)
             {
-                tween.Kill();
+                cutBySword=true;
+                //tween.Kill();
                 hit=true;
                 Dead();
             }
@@ -172,8 +176,8 @@ public class EnemyTrigger : MonoBehaviour
         yield return new WaitForSeconds(1f);
         enemyRagdoll.DeactiveRagdoll();
         //gameObject.transform.DOScale(new Vector3(0.01f,0.01f,0.01f),1).OnComplete(()=>Destroy(gameObject));
-        gameObject.transform.DOLocalMoveY(-1.5f,1f).OnComplete(()=>Destroy(gameObject));
-        //Destroy(gameObject);
+        gameObject.transform.DOLocalMoveY(-5f,1f).OnComplete(()=>Destroy(gameObject));
+        //Destroy(gameObject,1.75f);
     }
 
     /*private void PlayDeadZone()
