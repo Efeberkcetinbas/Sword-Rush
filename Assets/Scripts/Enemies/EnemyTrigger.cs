@@ -44,12 +44,9 @@ public class EnemyTrigger : MonoBehaviour
 
    public void Dead()
    {
-        //CreateEffect();
         //Debug.Log("DEAD");
         smr.material.color=Color.grey;
         boxCollider.enabled=false;
-        //GoEffectGo();
-        //uiManager.CreateCoinEffect();
 
         transform.GetComponent<EffectToBar>().StartCoinMove(transform.position,transform.gameObject);
         if(!gameManager.isAnExplotion)
@@ -103,21 +100,7 @@ public class EnemyTrigger : MonoBehaviour
    }
     // Stayi dene bir de
 
-    private void GoEffectGo()
-    {
-        /*Vector3 movement=GameManager.Instance.Player.transform.localPosition;
-        GameObject clone=(GameObject)Instantiate(coinEffect,transform.position,Quaternion.identity);
-        coinEffect.transform.SetParent(null);
-        clone.transform.DOMoveX(-1.5f,0.75f).OnComplete(()=>{
-            Destroy(clone);
-            if(!gameManager.isAnExplotion)
-                UpdateManagers();
-        });*/
-    }
-    private void CreateEffect()
-    {
-        Instantiate(coinEffect,Camera.main.WorldToScreenPoint(transform.position),uiManager.target.rotation,uiManager.target);
-    }
+    
     
     
    void OnTriggerStay(Collider other)
