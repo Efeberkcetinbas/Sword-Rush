@@ -2028,6 +2028,7 @@ MonoBehaviour:
   - {fileID: 504992267209381887}
   - {fileID: 7087095904611833565}
   - {fileID: 1995730513858964324}
+  coinEffect: {fileID: 3801071994548960024, guid: bdf99bc962f1b14449f924a51eead623, type: 3}
 --- !u!114 &7819418315391494611
 MonoBehaviour:
   m_ObjectHideFlags: 0

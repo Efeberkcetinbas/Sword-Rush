@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI earnText;
     public TextMeshProUGUI swordAreaText;
 
-    public Transform target;
+    
 
     void Awake()
     {
@@ -49,6 +49,7 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 
     public void UpgradeLevelText()
     {
@@ -90,6 +91,7 @@ public class UIManager : MonoBehaviour
     {
         playerHealthImage.DOFillAmount(val,0.05f);
     }
+
 
 
 

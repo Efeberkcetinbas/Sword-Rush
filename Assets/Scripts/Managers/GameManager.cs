@@ -131,7 +131,16 @@ public class GameManager : MonoBehaviour
    
     public void UpdateEnemyCounter()
     {
-        EnemyCounter=FindObjectOfType<CountOfEnemy>().ultiCounter;
+        if(LevelManager.Instance.newBackground<=14)
+        {
+            EnemyCounter=FindObjectOfType<CountOfEnemy>().ultiCounter;
+        }
+
+        if(LevelManager.Instance.newBackground>14)
+        {
+            EnemyCounter=FindObjectOfType<CountOfEnemy>().ultiCounter*2;
+        }
+        
         SumOfEnemies=FindObjectOfType<CountOfEnemy>().whatIsEnemyCount;
         increaseValue=1/(float)EnemyCounter;
     }

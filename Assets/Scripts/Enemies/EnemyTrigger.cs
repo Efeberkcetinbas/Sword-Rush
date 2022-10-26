@@ -27,6 +27,8 @@ public class EnemyTrigger : MonoBehaviour
     private UIManager uiManager;
     private CameraManager cameraManager;
 
+    public GameObject coinEffect;
+
     //New Buraya dikkatttt
     public Tween tween;
    void Start()
@@ -41,10 +43,12 @@ public class EnemyTrigger : MonoBehaviour
 
    public void Dead()
    {
+        //CreateEffect();
         //Debug.Log("DEAD");
         smr.material.color=Color.grey;
         boxCollider.enabled=false;
-
+        //GoEffectGo();
+        //uiManager.CreateCoinEffect();
         if(!gameManager.isAnExplotion)
             UpdateManagers();
 
@@ -93,6 +97,24 @@ public class EnemyTrigger : MonoBehaviour
         });
    }
     // Stayi dene bir de
+
+    private void GoEffectGo()
+    {
+        /*Vector3 movement=GameManager.Instance.Player.transform.localPosition;
+        GameObject clone=(GameObject)Instantiate(coinEffect,transform.position,Quaternion.identity);
+        coinEffect.transform.SetParent(null);
+        clone.transform.DOMoveX(-1.5f,0.75f).OnComplete(()=>{
+            Destroy(clone);
+            if(!gameManager.isAnExplotion)
+                UpdateManagers();
+        });*/
+    }
+    private void CreateEffect()
+    {
+        GameObject clone=(GameObject)Instantiate(coinEffect,GameManager.Instance.Player.transform.localPosition,Quaternion.identity);
+        clone.transform.DOLocalMoveX(-1.32f,1f);
+    }
+    
     
    void OnTriggerStay(Collider other)
    {

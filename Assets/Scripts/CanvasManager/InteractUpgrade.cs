@@ -33,7 +33,7 @@ public class InteractUpgrade : MonoBehaviour
     void Start()
     {
         moneyManager=MoneyManager.Instance;
-        earnPrice=PlayerPrefs.GetFloat("earn",100);
+        earnPrice=PlayerPrefs.GetFloat("earn",50);
         timeDecreasePrice=PlayerPrefs.GetFloat("timeDecrease",75);
         areaPrice=PlayerPrefs.GetFloat("area",50);
         UpdateText(timeText,timeDecreasePrice);
@@ -92,7 +92,7 @@ public class InteractUpgrade : MonoBehaviour
             //PlayerPrefs.GetFloat("earn");
             NewMoneyAmount(earnPrice);
             ButtonActive(earnButton,true);
-            earnPrice=Mathf.RoundToInt(earnPrice*1.75f);
+            earnPrice=Mathf.RoundToInt(earnPrice*1.8f);
             PlayerPrefs.SetFloat("earn",earnPrice);
             UpdateText(earnText,earnPrice);
             MakeTween(earnButton.gameObject);
