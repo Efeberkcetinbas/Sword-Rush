@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-
+using ElephantSDK;
 
 public class GameManager : MonoBehaviour
 {
