@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Facebook;
-using Facebook.Unity;
-using ElephantSDK;
+//using Facebook.Unity;
+//using ElephantSDK;
 
 public class LevelManager : MonoBehaviour
 {
@@ -38,7 +37,6 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         LoadLevel();
-        FB.Init();
     }
     private void LoadLevel()
     {
@@ -169,7 +167,7 @@ public class LevelManager : MonoBehaviour
         }
         
     }
-
+​
     public void LogAchieveLevelEvent(string level)
     {
         
@@ -180,7 +178,7 @@ public class LevelManager : MonoBehaviour
             parameters
         ); 
     }
-
+​
     public void LogLevelFailEvent(int level)
     {
         
@@ -192,7 +190,7 @@ public class LevelManager : MonoBehaviour
         );
         
     }
-
+​
     public void LogRestartEvent(int level)
     {
         
