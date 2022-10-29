@@ -54,7 +54,7 @@ public class LevelManager : MonoBehaviour
         UIManager.Instance.UpdateArea();
         //Debug.Log(levels[levelIndex]);
         
-        Elephant.LevelStarted((PlayerPrefs.GetInt("RealLevel", 0) + 1));
+        //Elephant.LevelStarted((PlayerPrefs.GetInt("RealLevel", 0) + 1));
         
 
         GameManager.Instance.DestroyGeneratedList();
@@ -90,8 +90,8 @@ public class LevelManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        Elephant.LevelCompleted(PlayerPrefs.GetInt("RealLevel", 0) + 1);
-        LogAchieveLevelEvent((PlayerPrefs.GetInt("RealLevel", 0) + 1).ToString());
+        //Elephant.LevelCompleted(PlayerPrefs.GetInt("RealLevel", 0) + 1);
+        //LogAchieveLevelEvent((PlayerPrefs.GetInt("RealLevel", 0) + 1).ToString());
         PlayerPrefs.SetInt("LevelNumber", levelIndex + 1);
         PlayerPrefs.SetInt("RealLevel", PlayerPrefs.GetInt("RealLevel", 0) + 1);
         LoadLevel();
@@ -142,7 +142,7 @@ public class LevelManager : MonoBehaviour
             ground[i].material=groundMaterials[backgroundIndex];
         }
     }
-
+/*
     void OnApplicationPause(bool pauseStatus)
     {
         
@@ -167,7 +167,8 @@ public class LevelManager : MonoBehaviour
         }
         
     }
-​
+
+
     public void LogAchieveLevelEvent(string level)
     {
         
@@ -202,4 +203,5 @@ public class LevelManager : MonoBehaviour
         );
         
     }
+    */
 }
