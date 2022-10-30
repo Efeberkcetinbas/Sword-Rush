@@ -9,7 +9,6 @@ namespace ElephantSDK
     {
         public string mopub_keyword;
         public bool ad_callback_logs;
-        public bool ad_event_enabled;
         public bool backup_ads_enabled;
         public string backup_interstitial_ad_unit;
         public string backup_rewarded_ad_unit;
@@ -24,7 +23,6 @@ namespace ElephantSDK
         {
             mopub_keyword = "";
             ad_callback_logs = false;
-            ad_event_enabled = true;
             backup_ads_enabled = false;
             backup_interstitial_ad_unit = "";
             backup_rewarded_ad_unit = "";
@@ -45,7 +43,6 @@ namespace ElephantSDK
             
             mopub_keyword = config.mopub_keyword ;
             ad_callback_logs = config.ad_callback_logs;
-            ad_event_enabled = config.ad_event_enabled;
             backup_ads_enabled = config.backup_ads_enabled;
             backup_interstitial_ad_unit = config.backup_interstitial_ad_unit;
             backup_rewarded_ad_unit = config.backup_rewarded_ad_unit;

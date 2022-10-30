@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using ElephantSDK;
 
 public class GameManager : MonoBehaviour
 {
@@ -248,8 +247,6 @@ public class GameManager : MonoBehaviour
         gameEndCanvas.SetActive(true);
         successPanel.SetActive(false);
         failPanel.SetActive(true);
-        Elephant.LevelFailed(PlayerPrefs.GetInt("RealLevel") + 1);
-        LevelManager.Instance.LogLevelFailEvent(PlayerPrefs.GetInt("RealLevel") + 1);
     }
 
     public void ResetGameEnds()
