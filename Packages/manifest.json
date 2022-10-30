@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.unity.ai.navigation.components": "https://github.com/Unity-Technologies/NavMeshComponents.git#package",
     "com.unity.cinemachine": "2.6.17",
     "com.unity.collab-proxy": "1.9.0",
     "com.unity.device-simulator": "2.2.4-preview",
